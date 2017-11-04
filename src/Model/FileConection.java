@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
 
+import View.UiExport;
+
 public class FileConection {
 	static JFileChooser jf ;
 
@@ -31,9 +33,8 @@ public class FileConection {
 				}while (so != null);
 				reader.close();
 				fr.close();
-
+				
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.getMessage();
 			}
 		}
@@ -54,7 +55,6 @@ public class FileConection {
 				fw.close();
 
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.getMessage();
 			}
 		}
