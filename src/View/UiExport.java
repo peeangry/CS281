@@ -2,88 +2,90 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import Model.FileConection;
-
-public class UiExport extends JPanel implements ActionListener{
-	private JButton b1,b2,b3;
-	private JTextArea a;
-	private JScrollPane sp;
-	public static JLabel filename;
-	private JPanel p1,p2;
-	String so;
-	//JFileChooser jf ;
-	 public UiExport() {
-		 this.setLayout(new BorderLayout());
-		 a = new JTextArea();
-		 sp = new JScrollPane(a);
-		 b1 = new JButton("Browse");
-		 b2 = new JButton("Save");
-		 b3 = new JButton("Next");
-		 p1=new JPanel();
-		 p2=new JPanel();
-		 filename = new JLabel(".........");
-		 sp.setPreferredSize(new Dimension(400, 200));
-		 a.setBorder(new LineBorder(Color.BLACK));
-		 p2.setLayout(new FlowLayout());
-		 p2.add(b1);
-		 p2.add(filename);
-		 p1.add(b2);
-		 p1.add(b3);
-		 this.add(p2,BorderLayout.NORTH);
-		 this.add(sp,BorderLayout.CENTER);
-		 this.add(p1,BorderLayout.SOUTH);
-
-		 b1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FileConection.openFile(a);
-			
-			}
-		});
-		 b2.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FileConection.saveFile(a);
-			}
-		});
-		 b3.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Young mai dai tam ja");
-				
-			}
-		});
-	 }
-	 public static void main(String[] args) {
-		 UiExport ue = new UiExport();
-			JFrame f = new JFrame();
-			f.setSize(600, 400);
-			f.setTitle("Last Check");
-			f.add(ue);
-			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			f.setVisible(true);
-	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+public class UiExport extends JFrame{
+	JPanel panel1;
+	JPanel panel2;
+	JPanel panel3;
+	JPanel panel31;
+	JPanel panel32;
+	JPanel panel33;
+	JPanel mainPanel3;
+	JLabel head;
+	JLabel export;
+	JButton back;
+	JButton browse;
+	JButton save;
+	JButton edit;
+	JTextArea txt;
+	JTextArea txt1;
+	
+	public UiExport(){
+		panel1 = new JPanel();
+		panel1.setBackground(new Color(255,193,37));
+		head = new JLabel("สำนักงานทะเบียนนักศึกษา");
+		panel2 = new JPanel();
+		panel2.setBackground(new Color(255,236,139));
+		back = new JButton("BACK");
+		back.setBackground(new Color(255,127,0));
+		panel3 = new JPanel();
+		panel3.setBackground(Color.WHITE);
+		export = new JLabel("Export Grade");
+		panel31 = new JPanel();
+		panel31.setBackground(Color.WHITE);
+		browse = new JButton("BROWSE");
+		txt = new JTextArea(1, 20);
+		txt.setBorder(new LineBorder(Color.BLACK));
+		mainPanel3 = new JPanel();
+		mainPanel3.setBackground(Color.WHITE);
+		panel32 = new JPanel();
+		panel32.setBackground(Color.WHITE);
+		txt1 = new JTextArea(10,40);
+		txt1.setBorder(new LineBorder(Color.BLACK));
+		panel33 = new JPanel();
+		panel33.setBackground(Color.WHITE);
+		save = new JButton("SAVE");
+		edit = new JButton("EDIT");
 		
+		panel1.add(head);
+		this.add(panel1,BorderLayout.NORTH);
+		
+		panel2.add(back);
+		this.add(panel2,BorderLayout.WEST);
+		
+		panel3.add(export);
+		panel31.add(browse);
+		panel31.add(txt);
+		panel32.add(txt1);
+		panel33.add(edit);
+		panel33.add(save);
+		JPanel test1 = new JPanel(new GridLayout(2, 1));
+		test1.add(panel3);
+		test1.add(panel31);
+		//test2.add(panel33);
+		mainPanel3.add(test1);
+		mainPanel3.add(panel32);
+		mainPanel3.add(panel33);
+		this.add(mainPanel3,BorderLayout.CENTER);
+		setTitle("THAMMASAT UNIVERSITY");
+		setSize(600,600);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		UiExport ue = new UiExport();
+	}
+
 }
