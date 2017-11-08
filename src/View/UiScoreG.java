@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import Control.HomePage;
 import Model.FileConection;
+import Model.Point;
 
 public class UiScoreG extends JFrame {
 	JPanel panel11;
@@ -64,24 +65,26 @@ public class UiScoreG extends JFrame {
 	JButton save;
 	JButton clear;
 	JButton edit;
-	JTextField txta;
-	JTextField txta1;
-	JTextField txtbp;
-	JTextField txtbp1;
-	JTextField txtb;
-	JTextField txtb1;
-	JTextField txtcp;
-	JTextField txtcp1;
-	JTextField txtc;
-	JTextField txtc1;
-	JTextField txtdp;
-	JTextField txtdp1;
-	JTextField txtd;
-	JTextField txtd1;
-	JTextField txtf;
-	JTextField txtf1;
+	static JTextField txta;
+	static JTextField txta1;
+	static JTextField txtbp;
+	static JTextField txtbp1;
+	static JTextField txtb;
+	static JTextField txtb1;
+	static JTextField txtcp;
+	static JTextField txtcp1;
+	static JTextField txtc;
+	static JTextField txtc1;
+	static JTextField txtdp;
+	static JTextField txtdp1;
+	static JTextField txtd;
+	static JTextField txtd1;
+	static JTextField txtf;
+	static JTextField txtf1;
 	ImageIcon img;
-
+	static double a0,a1,bp0,bp1,b0,b1,cp0,cp1,c0,c1,dp0,dp1,d0,d1,f0,f1;
+	
+	
 	public UiScoreG() {
 		this.setLayout(new BorderLayout());
 		mainPanel1 = new JPanel();
@@ -283,6 +286,22 @@ public class UiScoreG extends JFrame {
 		mainPanel3.add(panel39);
 		mainPanel3.add(panel310);
 		mainPanel3.add(panel4);
+		a0 = Double.parseDouble(txta.getText());
+		a1 = Double.parseDouble(txta1.getText());
+		bp0 =Double.parseDouble(txtbp.getText());
+		bp1 = Double.parseDouble(txtbp1.getText());
+		b0 = Double.parseDouble(txtb.getText());
+		b1 = Double.parseDouble(txtb1.getText());
+		cp0 = Double.parseDouble(txtcp.getText());
+		cp1 = Double.parseDouble(txtcp1.getText());
+		c0 = Double.parseDouble(txtc.getText());
+		c1 = Double.parseDouble(txtc1.getText());
+		dp0 = Double.parseDouble(txtdp.getText());
+		dp1 = Double.parseDouble(txtdp1.getText());
+		d0 = Double.parseDouble(txtd.getText());
+		d1 = Double.parseDouble(txtd1.getText());
+		f0 = Double.parseDouble(txtf.getText());
+		f1 = Double.parseDouble(txtf1.getText());
 		this.add(mainPanel3, BorderLayout.CENTER);
 		edit.addActionListener(new ActionListener() {
 
@@ -327,7 +346,23 @@ public class UiScoreG extends JFrame {
 				txtd1.setEditable(false);
 				txtf.setEditable(false);
 				txtf1.setEditable(false);
-
+				a0 = Double.parseDouble(txta.getText());
+				a1 = Double.parseDouble(txta1.getText());
+				bp0 =Double.parseDouble(txtbp.getText());
+				bp1 = Double.parseDouble(txtbp1.getText());
+				b0 = Double.parseDouble(txtb.getText());
+				b1 = Double.parseDouble(txtb1.getText());
+				cp0 = Double.parseDouble(txtcp.getText());
+				cp1 = Double.parseDouble(txtcp1.getText());
+				c0 = Double.parseDouble(txtc.getText());
+				c1 = Double.parseDouble(txtc1.getText());
+				dp0 = Double.parseDouble(txtdp.getText());
+				dp1 = Double.parseDouble(txtdp1.getText());
+				d0 = Double.parseDouble(txtd.getText());
+				d1 = Double.parseDouble(txtd1.getText());
+				f0 = Double.parseDouble(txtf.getText());
+				f1 = Double.parseDouble(txtf1.getText());
+				Point.checkPoint();
 			}
 		});
 		clear.addActionListener(new ActionListener() {
@@ -385,9 +420,99 @@ public class UiScoreG extends JFrame {
 		setVisible(true);
 	}
 
+
+	
+	public static double getA0() {
+		return a0;
+	}
+	
+	public static double getA1() {
+		return a1;
+	}
+	
+	public static double getBp0() {
+		return bp0;
+	}
+	
+	public static double getBp1() {
+		return bp1;
+	}
+	
+	public static double getB0() {
+		return b0;
+	}
+	
+	public static double getB1() {
+		return b1;
+	}
+	
+	public static double getCp0() {
+		return cp0;
+	}
+	
+	public static double getCp1() {
+		return cp1;
+	}
+	
+	public static double getC0() {
+		return c0;
+	}
+	
+	public static double getC1() {
+		return c1;
+	}
+	
+	public static double getDp0() {
+		return dp0;
+	}
+	
+	public static double getDp1() {
+		return dp1;
+	}
+	
+	public static double getD0() {
+		return d0;
+	}
+	
+	public static double getD1() {
+		return d1;
+	}
+	public static double getF0() {
+		return f0;
+	}
+	public static double getF1() {
+		return f1;
+	}
+
+	public static void setA1() {
+		txta.setText("100");
+	}
+	public static void setBp1() {
+		txtbp.setText("79.9");
+	}
+	public static void setB1() {
+		txtb.setText("74.9");
+	}
+	public static void setCp1() {
+		txtcp.setText("64.9");
+	}
+	public static void setC1() {
+		txtc.setText("59.9");
+	}
+	public static void setDp1() {
+		txtdp.setText("54.9");
+	}
+	public static void setD1() {
+		txtd.setText("49.9");
+	}
+	public static void setF1() {
+		txtf.setText("0");
+	}
+
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		UiScoreG us = new UiScoreG();
 	}
-
 }
