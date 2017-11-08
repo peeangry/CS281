@@ -2,17 +2,22 @@ package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import Control.HomePage;
+import Model.FileConection;
 
-public class UiScoreG extends JFrame{
-	JPanel panel1;
+public class UiScoreG extends JFrame {
+	JPanel panel11;
+	JPanel panel12;
 	JPanel panel2;
 	JPanel panel31;
 	JPanel panel32;
@@ -25,6 +30,7 @@ public class UiScoreG extends JFrame{
 	JPanel panel39;
 	JPanel panel310;
 	JPanel panel4;
+	JPanel mainPanel1;
 	JPanel mainPanel3;
 	JLabel head;
 	JLabel g;
@@ -45,6 +51,7 @@ public class UiScoreG extends JFrame{
 	JLabel signDp;
 	JLabel signD;
 	JLabel signF;
+	JLabel thammasat;
 	JButton back;
 	JButton save;
 	JButton clear;
@@ -65,16 +72,25 @@ public class UiScoreG extends JFrame{
 	JTextField txtd1;
 	JTextField txtf;
 	JTextField txtf1;
-	
-	public UiScoreG(){
-		panel1 = new JPanel();
-		panel1.setBackground(new Color(255,193,37));
-		head = new JLabel("สำนักงานทะเบียนนักศึกษา");
+
+	public UiScoreG() {
+		this.setLayout(new BorderLayout());
+		mainPanel1 = new JPanel(new GridLayout(2, 1));
+		panel11 = new JPanel();
+		panel11.setBackground(new Color(255,193,37));
+		panel12 = new JPanel();
+		panel12.setBackground(new Color(255,193,37));
+		head = new JLabel("OFFICE OF THE REGISTRAION");
+		head.setForeground(Color.WHITE);
+		head.setFont(new Font("tahoma",Font.BOLD,30));
+		thammasat = new JLabel("THAMMASAT UNIVERSITY");
+		thammasat.setForeground(Color.WHITE);
+		thammasat.setFont(new Font("tahoma",Font.BOLD,18));
 		panel2 = new JPanel();
-		panel2.setBackground(new Color(255,236,139));
+		panel2.setBackground(new Color(255, 236, 139));
 		back = new JButton("BACK");
-		back.setBackground(new Color(255,127,0));
-		mainPanel3 = new JPanel(new GridLayout(11,1));
+		back.setBackground(new Color(255, 127, 0));
+		mainPanel3 = new JPanel(new GridLayout(11, 1));
 		mainPanel3.setBackground(Color.WHITE);
 		panel31 = new JPanel();
 		panel31.setBackground(Color.WHITE);
@@ -96,9 +112,9 @@ public class UiScoreG extends JFrame{
 		panel39.setBackground(Color.WHITE);
 		panel310 = new JPanel();
 		panel310.setBackground(Color.WHITE);
-		g = new JLabel("กำหนดเกณฑ์การตัดเกรด");
+		g = new JLabel("Grade confix");
 		grade = new JLabel("Grade :");
-		A = new JLabel("A  : ");
+		A = new JLabel("A  :  ");
 		txta = new JTextField(3);
 		signA = new JLabel("<=");
 		txta1 = new JTextField(3);
@@ -106,7 +122,7 @@ public class UiScoreG extends JFrame{
 		txtbp = new JTextField(3);
 		signBp = new JLabel("<=");
 		txtbp1 = new JTextField(3);
-		B = new JLabel("B  : ");
+		B = new JLabel("B  :  ");
 		txtb = new JTextField(3);
 		signB = new JLabel("<=");
 		txtb1 = new JTextField(3);
@@ -114,7 +130,7 @@ public class UiScoreG extends JFrame{
 		txtcp = new JTextField(3);
 		signCp = new JLabel("<=");
 		txtcp1 = new JTextField(3);
-		C = new JLabel("C  : ");
+		C = new JLabel("C  :  ");
 		txtc = new JTextField(3);
 		signC = new JLabel("<=");
 		txtc1 = new JTextField(3);
@@ -122,11 +138,11 @@ public class UiScoreG extends JFrame{
 		txtdp = new JTextField(3);
 		signDp = new JLabel("<=");
 		txtdp1 = new JTextField(3);
-		D = new JLabel("D  : ");
+		D = new JLabel("D  :  ");
 		txtd = new JTextField(3);
 		signD = new JLabel("<=");
 		txtd1 = new JTextField(3);
-		F = new JLabel("F  : ");
+		F = new JLabel("F  :  ");
 		txtf = new JTextField(3);
 		signF = new JLabel("<=");
 		txtf1 = new JTextField(3);
@@ -135,13 +151,48 @@ public class UiScoreG extends JFrame{
 		save = new JButton("SAVE");
 		clear = new JButton("CLEAR");
 		edit = new JButton("EDIT");
+		txta.setText("100");
+		txta1.setText("80");
+		txtbp.setText("79.9");
+		txtbp1.setText("75");
+		txtb.setText("74.9");
+		txtb1.setText("70");
+		txtcp.setText("69.9");
+		txtcp1.setText("65");
+		txtc.setText("64.9");
+		txtc1.setText("60");
+		txtdp.setText("59.9");
+		txtdp1.setText("55");
+		txtd.setText("54.9");
+		txtd1.setText("50");
+		txtf.setText("49.9");
+		txtf1.setText("0");
+		txta.setEditable(false);
+		txta1.setEditable(false);
+		txtbp.setEditable(false);
+		txtbp1.setEditable(false);
+		txtb.setEditable(false);
+		txtb1.setEditable(false);
+		txtcp.setEditable(false);
+		txtcp1.setEditable(false);
+		txtc.setEditable(false);
+		txtc1.setEditable(false);
+		txtdp.setEditable(false);
+		txtdp1.setEditable(false);
+		txtd.setEditable(false);
+		txtd1.setEditable(false);
+		txtf.setEditable(false);
+		txtf1.setEditable(false);
 		
-		panel1.add(head);
-		this.add(panel1,BorderLayout.NORTH);
-		
+		panel11.add(head);
+		panel12.add(thammasat);
+		mainPanel1.add(panel11);
+		mainPanel1.add(panel12);
+		this.add(mainPanel1, BorderLayout.NORTH);
+
 		panel2.add(back);
-		this.add(panel2,BorderLayout.WEST);
-		
+		this.add(panel2, BorderLayout.WEST);
+
 		panel31.add(g);
 		panel32.add(grade);
 		panel33.add(A);
@@ -190,11 +241,103 @@ public class UiScoreG extends JFrame{
 		mainPanel3.add(panel39);
 		mainPanel3.add(panel310);
 		mainPanel3.add(panel4);
-		this.add(mainPanel3,BorderLayout.CENTER);
-		
+		this.add(mainPanel3, BorderLayout.CENTER);
+		edit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				txta.setEditable(true);
+				txta1.setEditable(true);
+				txtbp.setEditable(true);
+				txtbp1.setEditable(true);
+				txtb.setEditable(true);
+				txtb1.setEditable(true);
+				txtcp.setEditable(true);
+				txtcp1.setEditable(true);
+				txtc.setEditable(true);
+				txtc1.setEditable(true);
+				txtdp.setEditable(true);
+				txtdp1.setEditable(true);
+				txtd.setEditable(true);
+				txtd1.setEditable(true);
+				txtf.setEditable(true);
+				txtf1.setEditable(true);
+
+			}
+		});
+		save.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				txta.setEditable(false);
+				txta1.setEditable(false);
+				txtbp.setEditable(false);
+				txtbp1.setEditable(false);
+				txtb.setEditable(false);
+				txtb1.setEditable(false);
+				txtcp.setEditable(false);
+				txtcp1.setEditable(false);
+				txtc.setEditable(false);
+				txtc1.setEditable(false);
+				txtdp.setEditable(false);
+				txtdp1.setEditable(false);
+				txtd.setEditable(false);
+				txtd1.setEditable(false);
+				txtf.setEditable(false);
+				txtf1.setEditable(false);
+
+			}
+		});
+		clear.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				txta.setText("");
+				txta1.setText("");
+				txtbp.setText("");
+				txtbp1.setText("");
+				txtb.setText("");
+				txtb1.setText("");
+				txtcp.setText("");
+				txtcp1.setText("");
+				txtc.setText("");
+				txtc1.setText("");
+				txtdp.setText("");
+				txtdp1.setText("");
+				txtd.setText("");
+				txtd1.setText("");
+				txtf.setText("");
+				txtf1.setText("");
+				txta.setEditable(true);
+				txta1.setEditable(true);
+				txtbp.setEditable(true);
+				txtbp1.setEditable(true);
+				txtb.setEditable(true);
+				txtb1.setEditable(true);
+				txtcp.setEditable(true);
+				txtcp1.setEditable(true);
+				txtc.setEditable(true);
+				txtc1.setEditable(true);
+				txtdp.setEditable(true);
+				txtdp1.setEditable(true);
+				txtd.setEditable(true);
+				txtd1.setEditable(true);
+				txtf.setEditable(true);
+				txtf1.setEditable(true);
+			}
+		});
+		back.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				HomePage.back();
+			}
+		});
 		pack();
 		setTitle("THAMMASAT UNIVERSITY");
-		setSize(800,600);
+		setSize(800, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
