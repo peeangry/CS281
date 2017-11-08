@@ -71,8 +71,10 @@ public class UiExport extends JFrame{
 		img = new ImageIcon("Thammasat.png");
 		picLabel = new JLabel(img);
 		panel2 = new JPanel();
+		panel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		panel2.setBackground(new Color(255,236,139));
 		back = new JButton("BACK");
+		back.setPreferredSize(new Dimension(175, 50));
 		back.setBackground(new Color(255,127,0));
 		back.setFont(new Font("tahoma",Font.BOLD,16));
 		panel3 = new JPanel();
@@ -162,6 +164,7 @@ public class UiExport extends JFrame{
 		this.add(panel2,BorderLayout.WEST);
 		this.add(mainPanel1p,BorderLayout.NORTH);
 		this.add(mainPanel3,BorderLayout.CENTER);
+		this.setResizable(false);
 		setTitle("THAMMASAT UNIVERSITY");
 		setSize(1000,800);
 	//	add(ue);

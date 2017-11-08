@@ -157,6 +157,7 @@ public class UiHomepage extends JFrame {
 		setSize(1000, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+		this.setResizable(false);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
