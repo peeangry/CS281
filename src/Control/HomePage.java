@@ -13,13 +13,13 @@ public class HomePage  {
 		UiHomepage ui = new UiHomepage();
 	}
 	public static void editGrade() {
-		UiScoreG us = new UiScoreG();
+		UiScoreG us = new UiScoreG();//Score
 	}
 	public static void Export() {
-		UiExport ue = new UiExport();
+		UiExport ue = new UiExport();//Export
 	}
 	public static void List() {
-		UiList ul = new UiList();
+		UiList ul = new UiList();//List
 	}
 
 }
