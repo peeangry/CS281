@@ -11,12 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
 
-public class FileConection {
-	static JFileChooser jf ;
-	static File f;
+import View.UiExport;
 
-	public static void openFile(JTextArea a) {
-		jf = new JFileChooser("C:\\Users\\User\\Desktop");
+public class FileConection {
+	static JFileChooser jf 	= new JFileChooser("C:\\Users\\User\\Desktop");
+	
+	static File f ;
+	static UiExport ue = new UiExport();
+	public static boolean openFile(JTextArea a) {
 		int win = jf.showOpenDialog(null);
 		if (win == JFileChooser.APPROVE_OPTION) {
 			try {
@@ -32,15 +34,16 @@ public class FileConection {
 				}while (so != null);
 				reader.close();
 				fr.close();
-
+				return true;
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.getMessage();
 			}
 		}
+		return false;
 	}
-	public static void saveFile(JTextArea a) {
-
+	public static boolean saveFile() {
+		
 		
 		int win = jf.showSaveDialog(null);
 		if (win == JFileChooser.APPROVE_OPTION) {
@@ -49,20 +52,23 @@ public class FileConection {
 				FileWriter fw = new FileWriter(f);
 				PrintWriter writer = new PrintWriter(fw);
 
-				writer.println(a.getText());
+				writer.println(ue.getTextArea().getText());
 
 				writer.close();
 				fw.close();
-
+				return true;
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.getMessage();
 			}
 		}
-
+		return false;
 	}
 	
 	public static String getPath(){
+		if(f==null) {
+			return null;
+		}
 		return f.getPath();
 	}
 }

@@ -124,7 +124,7 @@ public class UiList extends JFrame implements ActionListener{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					FileConection.saveFile(txt);
+					FileConection.saveFile();
 			}
 		});
 		back.addActionListener(new ActionListener() {

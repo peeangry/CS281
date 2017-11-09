@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -44,7 +45,7 @@ public class UiExport extends JFrame{
 	JButton export1;
 	JButton edit;
 	JTextArea txt;
-	JTextArea txt1;
+	static JTextArea txt1;
 	JScrollPane sp;
 	ImageIcon img;
 	
@@ -131,8 +132,11 @@ public class UiExport extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FileConection.openFile(txt1);
+				if(FileConection.getPath()==null) {
+					JOptionPane.showMessageDialog(null,"File is null ","Invalid File ",JOptionPane.ERROR_MESSAGE);
+				}else {
 				txt.setText(FileConection.getPath());
-				
+				}
 			}
 		});
 		edit.addActionListener(new ActionListener() {
@@ -147,7 +151,7 @@ public class UiExport extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileConection.saveFile(txt1);				
+				FileConection.saveFile();				
 				
 			}
 		});
@@ -170,6 +174,9 @@ public class UiExport extends JFrame{
 	//	add(ue);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+	}
+	public static JTextArea getTextArea() {
+		return txt1;
 	}
 
 	public static void main(String[] args) {
