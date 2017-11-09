@@ -86,9 +86,9 @@ public class UiList extends JFrame implements ActionListener{
 		txt.setEditable(false);
 		sp = new JScrollPane(txt);
 		sp.setPreferredSize(new Dimension(400, 140));
-		open = new JButton("OPEN");
+		open = new JButton("OPEN File To Server");
 		txt1 = new JTextField(25);
-		save = new JButton("SAVE");
+		save = new JButton("SAVE File To Server");
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -105,28 +105,28 @@ public class UiList extends JFrame implements ActionListener{
 		panel31.add(sp);
 		panel32.add(open);
 		panel32.add(txt1);
-		panel33.add(save);
+		//panel33.add(save);
 		mainPanel3.add(panel31);
 		mainPanel3.add(panel32);
 		mainPanel3.add(panel33);
 		this.add(mainPanel3,BorderLayout.CENTER);
 		
 		open.addActionListener(new ActionListener() {
-			
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					FileConection.openFile(txt);	
+					txt1.setText(FileConection.getPath());
+					FileConection.saveFileToServer(txt);
 			}
 		});
 		
-		save.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					FileConection.saveFile();
-			}
-		});
+//		save.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//					FileConection.saveFileToServer(txt);
+//			}
+//		});
 		back.addActionListener(new ActionListener() {
 
 			@Override

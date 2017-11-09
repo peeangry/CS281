@@ -14,12 +14,12 @@ class TestExport {
 	@Test
 	public void testcanExportFile()
 	{
-			assertTrue(FileConection.saveFile());//
+			assertTrue(FileConection.saveFileExport());//
 	}
 	@Test
 	public void testExporttocancel()
 	{
-			assertFalse(FileConection.saveFile());
+			assertFalse(FileConection.saveFileExport());
 	}
 
 }

@@ -151,7 +151,7 @@ public class UiExport extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileConection.saveFile();				
+				FileConection.saveFileExport();				
 				
 			}
 		});
