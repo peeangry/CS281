@@ -89,7 +89,7 @@ public class UiExport extends JFrame{
 		txt.setBorder(new LineBorder(Color.BLACK));
 		mainPanel3 = new JPanel();
 		mainPanel3.setBackground(Color.WHITE);
-		panel32 = new JPanel();
+		panel32 = new JPanel(new BorderLayout());
 		panel32.setBackground(Color.WHITE);
 		txt1 = new JTextArea();
 		txt1.setBorder(new LineBorder(Color.BLACK));
@@ -98,7 +98,8 @@ public class UiExport extends JFrame{
 		sp.setPreferredSize(new Dimension(400, 200));
 		panel33 = new JPanel();
 		panel33.setBackground(Color.WHITE);
-		export1 = new JButton("EXPORT");
+		export1 = new JButton("Import Grade To Registration");
+		export1.setPreferredSize(new Dimension(panel32.getWidth(), 30));
 		edit = new JButton("EDIT");
 		
 		panel11.add(head);
@@ -116,8 +117,8 @@ public class UiExport extends JFrame{
 		panel31.add(browse);
 		panel31.add(txt);
 		panel32.add(sp);
-		panel33.add(edit);
-		panel33.add(export1);
+		//panel33.add(edit);
+		panel32.add(export1,BorderLayout.SOUTH);
 		
 		JPanel test1 = new JPanel(new GridLayout(2, 1));
 		test1.add(panel3);
@@ -126,7 +127,7 @@ public class UiExport extends JFrame{
 		mainPanel3.setLayout(new BorderLayout());
 		mainPanel3.add(test1,BorderLayout.NORTH);
 		mainPanel3.add(panel32,BorderLayout.CENTER);
-		mainPanel3.add(panel33,BorderLayout.SOUTH);
+		//mainPanel3.add(panel33,BorderLayout.SOUTH);
 		browse.addActionListener(new ActionListener() {
 			
 			@Override
