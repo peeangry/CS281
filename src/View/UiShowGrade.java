@@ -3,7 +3,6 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,17 +13,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import Control.HomePage;
 import Model.FileConection;
 
-public class UiExport extends JFrame{
+public class UiShowGrade extends JFrame{
+	
 	JPanel panel11;
 	JPanel panel12;
 	JPanel panel13;
@@ -37,20 +37,18 @@ public class UiExport extends JFrame{
 	JPanel mainPanel1p;
 	JPanel mainPanel3;
 	JLabel head;
-	JLabel export;
 	JLabel thammasat;
 	JLabel picLabel;
-	JButton back;
-	JButton browse;
-	JButton export1;
-	JButton edit;
-	JTextArea txt;
-	static JTextArea txt1;
-	JScrollPane sp;
+	JLabel grade;
 	ImageIcon img;
-	
-	public UiExport(){
+	JButton back;
+	JButton edit;
+	JButton save;
+	String roll;
+	int rows;
+	public UiShowGrade(){
 		this.setLayout(new BorderLayout());
+		
 		mainPanel1p = new JPanel(new BorderLayout());
 		mainPanel1p.setBackground(new Color(255,193,37));
 		mainPanel1 = new JPanel(new GridLayout(2, 1));
@@ -78,31 +76,40 @@ public class UiExport extends JFrame{
 		back.setPreferredSize(new Dimension(175, 50));
 		back.setBackground(new Color(255,127,0));
 		back.setFont(new Font("tahoma",Font.BOLD,16));
-		panel3 = new JPanel();
-		panel3.setBackground(Color.WHITE);
-		export = new JLabel("Export Grade");
-		export.setFont(new Font("tahoma",Font.BOLD,20));
+		mainPanel3 = new JPanel(new BorderLayout());
+		mainPanel3.setBackground(Color.WHITE);
 		panel31 = new JPanel();
 		panel31.setBackground(Color.WHITE);
-		browse = new JButton("BROWSE");
-		txt = new JTextArea(1, 20);
-		txt.setBorder(new LineBorder(Color.BLACK));
-		mainPanel3 = new JPanel(new FlowLayout());
-		mainPanel3.setBackground(Color.WHITE);
 		panel32 = new JPanel(new BorderLayout());
 		panel32.setBackground(Color.WHITE);
-		txt1 = new JTextArea();
-		txt1.setBorder(new LineBorder(Color.BLACK));
-		txt1.setEditable(false);
-		sp = new JScrollPane(txt1);
-		sp.setPreferredSize(new Dimension(400, 200));
 		panel33 = new JPanel();
 		panel33.setBackground(Color.WHITE);
-		export1 = new JButton("Import Grade To Registration");
-		export1.setEnabled(false);
-		export1.setPreferredSize(new Dimension(panel32.getWidth(), 30));
+		grade = new JLabel("Grade : ");
+		grade.setFont(new Font("tahoma",Font.BOLD,28));
 		edit = new JButton("EDIT");
-	//
+		save = new JButton("SAVE");
+		roll = FileConection.getTable();
+		
+		String[] column = {"ID STUDENT", "SCORE", "GRADE"};
+		
+		Object[][] data = {
+				{
+					//"01", "85", "A"
+				},
+				{
+					//"02", "54", "C"
+				}
+		};
+		
+		rows = Integer.parseInt(roll);
+		//JTable table = new JTable(rows,3);
+		//table.setTableHeader(tableHeader);
+		JTable table ;
+		DefaultTableModel table_model;
+		table_model = new DefaultTableModel(column,rows);
+		table = new JTable(table_model);
+		JScrollPane tableScroll = new JScrollPane ( table );
+		
 		panel11.add(head);
 		panel12.add(thammasat);
 		panel13.add(picLabel);
@@ -114,43 +121,17 @@ public class UiExport extends JFrame{
 		
 		panel2.add(back);
 		
-		panel3.add(export);
-		panel31.add(browse);
-		panel31.add(txt);
-		panel32.add(sp);
-		panel32.add(export1,BorderLayout.SOUTH);
-		
-		JPanel test1 = new JPanel(new GridLayout(2, 1));
-		test1.add(panel3);
-		test1.add(panel31);
-		//test2.add(panel33);
 		mainPanel3.setLayout(new BorderLayout());
-		mainPanel3.add(test1,BorderLayout.NORTH);
+		panel31.add(grade);
+		panel32.add(table.getTableHeader(), BorderLayout.PAGE_START );
+		panel32.add(tableScroll);
+		panel33.add(edit);
+		panel33.add(save);
+		mainPanel3.add(panel31,BorderLayout.NORTH);
 		mainPanel3.add(panel32,BorderLayout.CENTER);
-		//mainPanel3.add(panel33,BorderLayout.SOUTH);
-		browse.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FileConection.OPENFileToServer(txt1);
-				export1.setEnabled(true);
-				if(FileConection.getPath()==null) {
-					JOptionPane.showMessageDialog(null,"File is null ","Invalid File ",JOptionPane.ERROR_MESSAGE);
-				}else {
-				txt.setText(FileConection.getPath());
-				}
-			}
-		});
-		export1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FileConection.saveFileExport();				
-				
-			}
-		});
+		mainPanel3.add(panel33,BorderLayout.SOUTH);
 		back.addActionListener(new ActionListener() {
-			
+			//test gitHub
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
@@ -158,24 +139,21 @@ public class UiExport extends JFrame{
 				HomePage.back();
 			}
 		});
+		
 		this.setBackground(new Color(255,236,139));
-		this.add(panel2,BorderLayout.WEST);
 		this.add(mainPanel1p,BorderLayout.NORTH);
+		this.add(panel2,BorderLayout.WEST);
 		this.add(mainPanel3,BorderLayout.CENTER);
 		this.setResizable(false);
 		setTitle("THAMMASAT UNIVERSITY");
 		setSize(1000,800);
-	//	add(ue);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}
-	public static JTextArea getTextArea() {
-		return txt1;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UiExport ue = new UiExport();
+		UiShowGrade ugs = new UiShowGrade();
 	}
 
 }

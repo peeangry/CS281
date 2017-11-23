@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,8 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import Control.HomePage;
+import Model.FileConection;
 
 public class UiScoreTotal extends JFrame{
 	JPanel panel11;
@@ -32,8 +37,13 @@ public class UiScoreTotal extends JFrame{
 	JLabel head;
 	JLabel thammasat;
 	JLabel picLabel;
+	JLabel total;
+	
 	ImageIcon img;
 	JButton back;
+	JButton save;
+	String roll;
+	int rows;
 	
 	public UiScoreTotal(){
 		this.setLayout(new BorderLayout());
@@ -66,8 +76,36 @@ public class UiScoreTotal extends JFrame{
 		back.setFont(new Font("tahoma",Font.BOLD,16));
 		mainPanel3 = new JPanel();
 		mainPanel3.setBackground(Color.WHITE);
+		panel31 = new JPanel(new BorderLayout());
+		panel31.setBackground(Color.WHITE);
 		panel32 = new JPanel(new BorderLayout());
 		panel32.setBackground(Color.WHITE);
+		roll = FileConection.getTable();
+		total = new JLabel("Score Total");
+		total.setFont(new Font("tahoma",Font.BOLD,28));
+		panel33 = new JPanel(new FlowLayout());
+		panel33.setBackground(Color.WHITE);
+		save = new JButton("SAVE");
+		
+		String[] column = {"ID STUDENT", "SCORE", "MIDTERM", "FINAL"};
+		
+		Object[][] data = {
+				{
+					//"01", "85", "A"
+				},
+				{
+					//"02", "54", "C"
+				}
+		};
+		
+		rows = Integer.parseInt(roll);
+		//JTable table = new JTable(rows,3);
+		//table.setTableHeader(tableHeader);
+		JTable table ;
+		DefaultTableModel table_model;
+		table_model = new DefaultTableModel(column,rows);
+		table = new JTable(table_model);
+		JScrollPane tableScroll = new JScrollPane ( table );
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -81,7 +119,13 @@ public class UiScoreTotal extends JFrame{
 		panel2.add(back);
 		
 		mainPanel3.setLayout(new BorderLayout());
+		panel31.add(total);
+		panel32.add(table.getTableHeader(), BorderLayout.PAGE_START );
+		panel32.add(tableScroll);
+		panel33.add(save);
+		mainPanel3.add(panel31,BorderLayout.NORTH);
 		mainPanel3.add(panel32,BorderLayout.CENTER);
+		mainPanel3.add(panel33,BorderLayout.SOUTH);
 		back.addActionListener(new ActionListener() {
 			
 			@Override

@@ -114,6 +114,7 @@ public class UiGradingCriteria extends JFrame implements ActionListener {
 		setTitle("THAMMASAT UNIVERSITY");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		System.out.println("5555");
 	}
 
 	@Override
