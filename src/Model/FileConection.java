@@ -30,7 +30,6 @@ public class FileConection {
 				f = jf.getSelectedFile();
 				FileReader fr = new FileReader(f);
 				BufferedReader reader = new BufferedReader(fr);
-
 				String so;
 				do {
 					so = reader.readLine();
@@ -69,8 +68,34 @@ public class FileConection {
 
 	}
 
+	public static boolean OPENFileToServer(JTextArea a) {
+
+		try {
+			f = new File("List.txt");
+			FileReader fr = new FileReader(f);
+			BufferedReader reader = new BufferedReader(fr);
+
+			String so;
+			do {
+				so = reader.readLine();
+				if (so != null) {
+					a.append(so + "\n");
+				}
+			} while (so != null);
+			reader.close();
+			fr.close();
+			return true;
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.getMessage();
+			return false;
+		}
+
+	}
+
 	public static boolean saveScoreToFile(String a) {
-		try (FileWriter fw = new FileWriter("Score.txt",false);
+		try (FileWriter fw = new FileWriter("Score.txt", false);
 				BufferedWriter bw = new BufferedWriter(fw);
 				PrintWriter out = new PrintWriter(bw)) {
 			out.print(a);
@@ -85,7 +110,7 @@ public class FileConection {
 			Point.score = new ArrayList<>();
 			while (sc.hasNextLine()) {
 				String str = sc.nextLine();
-				if(str.equals("")) {
+				if (str.equals("")) {
 					return false;
 				}
 				Point.score.add(Double.parseDouble(str));
@@ -125,5 +150,43 @@ public class FileConection {
 			return null;
 		}
 		return f.getPath();
+	}
+
+	public static int getSize(JTextArea a) {
+		return a.getLineCount() - 1;
+	}
+
+	public static boolean saveTable(JTextArea a) {
+
+		try {
+			f = new File("Table.txt");
+			FileWriter fw = new FileWriter(f);
+			PrintWriter writer = new PrintWriter(fw);
+			writer.println(FileConection.getSize(a));
+			writer.close();
+			fw.close();
+			return true;
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.getMessage();
+			return false;
+		}
+
+	}
+
+	public static String getTable() {
+		f = new File("Table.txt");
+		FileReader fr;
+		String so = null;
+		try {
+			fr = new FileReader(f);
+			BufferedReader reader = new BufferedReader(fr);
+			so = reader.readLine();
+			return so;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return so;
 	}
 }

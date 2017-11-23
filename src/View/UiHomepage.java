@@ -21,6 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 import Control.HomePage;
+import Model.FileConection;
 
 public class UiHomepage extends JFrame {
 	JPanel panel11;
@@ -39,10 +40,12 @@ public class UiHomepage extends JFrame {
 	JLabel head;
 	JLabel id;
 	JLabel txt;
+	
 	JLabel idShow;
 	JLabel thammasat;
 	JLabel picLabel;
 	JButton tea;
+	JButton fillScore;
 	JButton editG;
 	JButton exportG;
 	JTextPane pic;
@@ -84,6 +87,9 @@ public class UiHomepage extends JFrame {
 		tea = new JButton("LIST");
 		tea.setBackground(new Color(255, 127, 0));
 		tea.setFont(new Font("tahoma",Font.BOLD,16));
+		fillScore = new JButton("Fill Score");
+		fillScore.setBackground(new Color(255, 127, 0));
+		fillScore.setFont(new Font("tahoma",Font.BOLD,16));
 		editG = new JButton("EDIT GRADE");
 		editG.setBackground(new Color(255, 127, 0));
 		editG.setFont(new Font("tahoma",Font.BOLD,16));
@@ -114,6 +120,7 @@ public class UiHomepage extends JFrame {
 		mainPanel2.add(tea);
 		mainPanel2.add(editG);
 		mainPanel2.add(exportG);
+		mainPanel2.add(fillScore);
 		this.add(mainPanel2, BorderLayout.WEST);
 		;
 
@@ -150,8 +157,17 @@ public class UiHomepage extends JFrame {
 				HomePage.List();
 			}
 		});
+		fillScore.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+				HomePage.Fill();
+			}
+		});
 		
-
+		
 		pack();
 		setTitle("THAMMASAT UNIVERSITY");
 		setSize(1000, 800);
