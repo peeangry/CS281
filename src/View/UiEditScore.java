@@ -14,19 +14,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 
 import Control.HomePage;
-import Model.FileConection;
 
-public class UiList extends JFrame implements ActionListener{
+public class UiEditScore extends JFrame{
 	JPanel panel11;
 	JPanel panel12;
 	JPanel panel13;
 	JPanel panel2;
+	JPanel panel3;
 	JPanel panel31;
 	JPanel panel32;
 	JPanel panel33;
@@ -36,16 +32,10 @@ public class UiList extends JFrame implements ActionListener{
 	JLabel head;
 	JLabel thammasat;
 	JLabel picLabel;
-	JButton back;
-	JButton open;
-	JButton save;
-	JTextArea txt;
-	JTextField txt1;
-	JScrollPane sp;
 	ImageIcon img;
-	static int line;
+	JButton back;
 	
-	public UiList(){
+	public UiEditScore(){
 		this.setLayout(new BorderLayout());
 		mainPanel1p = new JPanel(new BorderLayout());
 		mainPanel1p.setBackground(new Color(255,193,37));
@@ -68,28 +58,16 @@ public class UiList extends JFrame implements ActionListener{
 		img = new ImageIcon("Thammasat.png");
 		picLabel = new JLabel(img);
 		panel2 = new JPanel();
-		panel2.setBackground(new Color(255, 236, 139));
+		panel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		panel2.setBackground(new Color(255,236,139));
 		back = new JButton("BACK");
 		back.setPreferredSize(new Dimension(175, 50));
-		back.setBackground(new Color(255, 127, 0));
+		back.setBackground(new Color(255,127,0));
 		back.setFont(new Font("tahoma",Font.BOLD,16));
-		mainPanel3 = new JPanel(new GridLayout(3, 1));
+		mainPanel3 = new JPanel(new BorderLayout());
 		mainPanel3.setBackground(Color.WHITE);
-		mainPanel3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		panel31 = new JPanel();
-		panel31.setBackground(Color.WHITE);
-		panel32 = new JPanel();
+		panel32 = new JPanel(new BorderLayout());
 		panel32.setBackground(Color.WHITE);
-		panel33 = new JPanel();
-		panel33.setBackground(Color.white);
-		txt = new JTextArea();
-		txt.setBorder(new LineBorder(Color.BLACK));
-		txt.setEditable(false);
-		sp = new JScrollPane(txt);
-		sp.setPreferredSize(new Dimension(400, 140));
-		open = new JButton("OPEN File To Server");
-		txt1 = new JTextField(25);
-		save = new JButton("SAVE File To Server");
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -101,59 +79,33 @@ public class UiList extends JFrame implements ActionListener{
 		this.add(mainPanel1p, BorderLayout.NORTH);
 		
 		panel2.add(back);
-		this.add(panel2, BorderLayout.WEST);
 		
-		panel31.add(sp);
-		panel32.add(open);
-		panel32.add(txt1);
-		//panel33.add(save);
-		mainPanel3.add(panel31);
-		mainPanel3.add(panel32);
-		mainPanel3.add(panel33);
-		this.add(mainPanel3,BorderLayout.CENTER);
-		
-		open.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					FileConection.openFile(txt);	
-					txt1.setText(FileConection.getPath());
-					FileConection.saveFileToServer(txt);
-					line=FileConection.getSize(txt);
-					FileConection.saveTable(txt);
-			}
-		});
-		
-//		save.addActionListener(new ActionListener() {
-//			
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//					FileConection.saveFileToServer(txt);
-//			}
-//		});
+		mainPanel3.setLayout(new BorderLayout());
+		mainPanel3.add(panel32,BorderLayout.CENTER);
 		back.addActionListener(new ActionListener() {
-
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
 				dispose();
 				HomePage.back();
 			}
 		});
-
+		
+		this.setBackground(new Color(255,236,139));
+		this.add(mainPanel1p,BorderLayout.NORTH);
+		this.add(panel2,BorderLayout.WEST);
+		this.add(mainPanel3,BorderLayout.CENTER);
 		this.setResizable(false);
-		setSize(1000, 800);
 		setTitle("THAMMASAT UNIVERSITY");
+		setSize(1000,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
-	public static void main(String[] args){
-		UiList ui = new UiList();
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		UiEditScore ues = new UiEditScore();
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

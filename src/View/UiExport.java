@@ -99,9 +99,10 @@ public class UiExport extends JFrame{
 		panel33 = new JPanel();
 		panel33.setBackground(Color.WHITE);
 		export1 = new JButton("Import Grade To Registration");
+		export1.setEnabled(false);
 		export1.setPreferredSize(new Dimension(panel32.getWidth(), 30));
 		edit = new JButton("EDIT");
-		
+	//
 		panel11.add(head);
 		panel12.add(thammasat);
 		panel13.add(picLabel);
@@ -132,20 +133,13 @@ public class UiExport extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileConection.openFile(txt1);
+				FileConection.OPENFileToServer(txt1);
+				export1.setEnabled(true);
 				if(FileConection.getPath()==null) {
 					JOptionPane.showMessageDialog(null,"File is null ","Invalid File ",JOptionPane.ERROR_MESSAGE);
 				}else {
 				txt.setText(FileConection.getPath());
 				}
-			}
-		});
-		edit.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				txt1.setEditable(true);
-				
 			}
 		});
 		export1.addActionListener(new ActionListener() {
