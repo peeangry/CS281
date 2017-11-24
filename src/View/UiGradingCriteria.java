@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Control.HomePage;
+import Model.FileConection;
+import Model.Point;
 
 public class UiGradingCriteria extends JFrame{
 	JPanel panel11;
@@ -52,7 +54,7 @@ public class UiGradingCriteria extends JFrame{
 	JTextField midtxt;
 	JTextField finaltxt;
 	JTextField retxt;
-	
+	private static double mid=40,fin=40,re=20;
 	public UiGradingCriteria(){
 		this.setLayout(new BorderLayout());
 		mainPanel1p = new JPanel(new BorderLayout());
@@ -117,6 +119,21 @@ public class UiGradingCriteria extends JFrame{
 		panel4.setBackground(Color.WHITE);
 		edit = new JButton("EDIT");
 		save = new  JButton("SAVE");
+		retxt.setEditable(false);
+		midtxt.setEditable(false);
+		finaltxt.setEditable(false);
+		if (FileConection.getCriteria()) {
+			retxt.setText(Point.getCri(0) + "");
+			midtxt.setText(Point.getCri(1) + "");
+			finaltxt.setText(Point.getCri(2) + "");
+			
+		} else {
+			retxt.setText(re + "");
+			midtxt.setText(mid+"");
+			finaltxt.setText(fin+"");
+			
+		}
+		
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -168,7 +185,30 @@ public class UiGradingCriteria extends JFrame{
 				HomePage.back();
 			}
 		});
-		
+		edit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				retxt.setEditable(true);
+				midtxt.setEditable(true);
+				finaltxt.setEditable(true);
+			}
+		});
+		save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				retxt.setEditable(false);
+				midtxt.setEditable(false);
+				finaltxt.setEditable(false);
+				re = Double.parseDouble(retxt.getText());
+				mid = Double.parseDouble(midtxt.getText());
+				fin = Double.parseDouble(finaltxt.getText());
+				Point.keepCriteria();
+			}
+		});
 		this.setBackground(new Color(255,236,139));
 		this.add(mainPanel1p,BorderLayout.NORTH);
 		this.add(panel2,BorderLayout.WEST);
@@ -184,5 +224,19 @@ public class UiGradingCriteria extends JFrame{
 		// TODO Auto-generated method stub
 		UiGradingCriteria ues = new UiGradingCriteria();
 	}
+
+	public static double getMid() {
+		return mid;
+	}
+
+	public static double getFin() {
+		return fin;
+	}
+
+	public static double getRe() {
+		return re;
+	}
+
+	
 
 }

@@ -45,9 +45,11 @@ public class UiHomepage extends JFrame {
 	JLabel thammasat;
 	JLabel picLabel;
 	JButton tea;
-	JButton fillScore;
+	JButton TotalScore;
 	JButton editG;
 	JButton exportG;
+	JButton Criteria;
+	JButton FillScore;
 	JTextPane pic;
 	ImageIcon img;
 	
@@ -87,12 +89,18 @@ public class UiHomepage extends JFrame {
 		tea = new JButton("LIST");
 		tea.setBackground(new Color(255, 127, 0));
 		tea.setFont(new Font("tahoma",Font.BOLD,16));
-		fillScore = new JButton("Fill Score");
-		fillScore.setBackground(new Color(255, 127, 0));
-		fillScore.setFont(new Font("tahoma",Font.BOLD,16));
+		TotalScore = new JButton("Total Score");
+		TotalScore.setBackground(new Color(255, 127, 0));
+		TotalScore.setFont(new Font("tahoma",Font.BOLD,16));
 		editG = new JButton("EDIT GRADE");
 		editG.setBackground(new Color(255, 127, 0));
 		editG.setFont(new Font("tahoma",Font.BOLD,16));
+		FillScore = new JButton("Fill Score");
+		FillScore.setBackground(new Color(255, 127, 0));
+		FillScore.setFont(new Font("tahoma",Font.BOLD,16));
+		Criteria = new JButton("Grading Criteria");
+		Criteria.setBackground(new Color(255, 127, 0));
+		Criteria.setFont(new Font("tahoma",Font.BOLD,16));
 		exportG = new JButton("EXPORT GRADE");
 		exportG.setBackground(new Color(255, 127, 0));
 		exportG.setFont(new Font("tahoma",Font.BOLD,16));
@@ -119,8 +127,10 @@ public class UiHomepage extends JFrame {
 
 		mainPanel2.add(tea);
 		mainPanel2.add(editG);
+		mainPanel2.add(Criteria);
+		mainPanel2.add(TotalScore);
+		mainPanel2.add(FillScore);
 		mainPanel2.add(exportG);
-		mainPanel2.add(fillScore);
 		this.add(mainPanel2, BorderLayout.WEST);
 		;
 
@@ -157,13 +167,31 @@ public class UiHomepage extends JFrame {
 				HomePage.List();
 			}
 		});
-		fillScore.addActionListener(new ActionListener() {
+		TotalScore.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dispose();
 				HomePage.Fill();
+			}
+		});
+		FillScore.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+				HomePage.Fill();
+			}
+		});
+		Criteria.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+				HomePage.Criteria();
 			}
 		});
 		

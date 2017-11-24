@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import View.UiGradingCriteria;
 import View.UiScoreG;
 
 public class Point {
 	static ArrayList<Double> score = new ArrayList<>();
-	
+	static ArrayList<Double> cri = new ArrayList<>();
 	public static boolean checkPoint() {
 		if (UiScoreG.getA1() <= UiScoreG.getA0()) {
 			UiScoreG.setA1();
@@ -91,5 +92,21 @@ public class Point {
 	public static double getPoint(int i) {
 		return score.get(i);
 	}
-
+	public static void keepCriteria() {
+		cri = new ArrayList<>();
+		cri.add(UiGradingCriteria.getRe());
+		cri.add(UiGradingCriteria.getFin());
+		cri.add(UiGradingCriteria.getMid());
+		String str = "";
+		for (int i = 0; i < cri.size(); i++) {
+			str += cri.get(i) + "\n";
+		}
+		if(FileConection.saveCriteriaToFile(str)) {
+			JOptionPane.showMessageDialog(null, "Success to save Criteria to server", "Success",
+					JOptionPane.INFORMATION_MESSAGE);	
+		}
+	}
+	public static double getCri(int i) {
+		return cri.get(i);
+	}
 }

@@ -94,32 +94,6 @@ public class FileConection {
 
 	}
 
-	public static boolean saveScoreToFile(String a) {
-		try (FileWriter fw = new FileWriter("Score.txt", false);
-				BufferedWriter bw = new BufferedWriter(fw);
-				PrintWriter out = new PrintWriter(bw)) {
-			out.print(a);
-		} catch (IOException e) {
-			return false;
-		}
-		return true;
-	}
-
-	public static boolean getPoint() {
-		try (Scanner sc = new Scanner(new File("Score.txt"))) {
-			Point.score = new ArrayList<>();
-			while (sc.hasNextLine()) {
-				String str = sc.nextLine();
-				if (str.equals("")) {
-					return false;
-				}
-				Point.score.add(Double.parseDouble(str));
-			}
-			return true;
-		} catch (FileNotFoundException | NumberFormatException e) {
-			return false;
-		}
-	}
 
 	public static boolean saveFileExport() {
 
@@ -188,5 +162,56 @@ public class FileConection {
 			e.printStackTrace();
 		}
 		return so;
+	}
+	public static boolean saveScoreToFile(String a) {
+		try (FileWriter fw = new FileWriter("Score.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static boolean getPoint() {
+		try (Scanner sc = new Scanner(new File("Score.txt"))) {
+			Point.score = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				if (str.equals("")) {
+					return false;
+				}
+				Point.score.add(Double.parseDouble(str));
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean saveCriteriaToFile(String a) {
+		try (FileWriter fw = new FileWriter("Criteria.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	public static boolean getCriteria() {
+		try (Scanner sc = new Scanner(new File("Criteria.txt"))) {
+			Point.cri = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				if (str.equals("")) {
+					return false;
+				}
+				Point.cri.add(Double.parseDouble(str));
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
 	}
 }
