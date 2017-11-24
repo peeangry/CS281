@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 
 import Control.HomePage;
 
-public class UiEditScore extends JFrame{
+public class UiGradingCriteria extends JFrame{
 	JPanel panel11;
 	JPanel panel12;
 	JPanel panel13;
@@ -29,6 +29,7 @@ public class UiEditScore extends JFrame{
 	JPanel panel32;
 	JPanel panel33;
 	JPanel panel34;
+	JPanel panel35;
 	JPanel panel4;
 	JPanel mainPanel1;
 	JPanel mainPanel1p;
@@ -52,7 +53,7 @@ public class UiEditScore extends JFrame{
 	JTextField finaltxt;
 	JTextField retxt;
 	
-	public UiEditScore(){
+	public UiGradingCriteria(){
 		this.setLayout(new BorderLayout());
 		mainPanel1p = new JPanel(new BorderLayout());
 		mainPanel1p.setBackground(new Color(255,193,37));
@@ -81,8 +82,7 @@ public class UiEditScore extends JFrame{
 		back.setPreferredSize(new Dimension(175, 50));
 		back.setBackground(new Color(255,127,0));
 		back.setFont(new Font("tahoma",Font.BOLD,16));
-		mainPanel3 = new JPanel(
-				);
+		mainPanel3 = new JPanel();
 		mainPanel3.setBackground(Color.WHITE);
 		mainPanel3p = new JPanel(new BorderLayout());
 		mainPanel3p.setBackground(Color.WHITE);
@@ -111,6 +111,8 @@ public class UiEditScore extends JFrame{
 		scorefin.setFont(new Font("tahoma",Font.BOLD,18));
 		panel34 = new JPanel();
 		panel34.setBackground(Color.WHITE);
+		panel35 = new JPanel();
+		panel35.setBackground(Color.WHITE);
 		panel4 = new JPanel();
 		panel4.setBackground(Color.WHITE);
 		edit = new JButton("EDIT");
@@ -124,8 +126,12 @@ public class UiEditScore extends JFrame{
 		mainPanel1p.add(panel13,BorderLayout.WEST);
 		mainPanel1p.add(mainPanel1);
 		this.add(mainPanel1p, BorderLayout.NORTH);
-		
+		panel35.setLayout(new BorderLayout());
 		panel2.add(back);
+		mainPanel3.setLayout(new BorderLayout());
+		panel32.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		panel33.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		panel34.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		
 		//mainPanel3.setLayout(new BorderLayout());
 		panel31.add(pop);
@@ -138,12 +144,16 @@ public class UiEditScore extends JFrame{
 		panel34.add(final1);
 		panel34.add(finaltxt);
 		panel34.add(scorefin);
+		panel35.add(panel33,BorderLayout.NORTH);
+		panel35.add(panel34,BorderLayout.CENTER);
 		panel4.add(edit);
 		panel4.add(save);
 		//mainPanel3.add(panel31);
-		mainPanel3.add(panel32);
-		mainPanel3.add(panel33);
-		mainPanel3.add(panel34);
+		
+		mainPanel3.add(panel32,BorderLayout.NORTH);
+		mainPanel3.add(panel35,BorderLayout.CENTER);
+		//mainPanel3.add(panel34,BorderLayout.SOUTH);
+		
 		mainPanel3p.add(panel31,BorderLayout.NORTH);
 		mainPanel3p.add(mainPanel3,BorderLayout.CENTER);
 		mainPanel3p.add(panel4,BorderLayout.SOUTH);
@@ -172,7 +182,7 @@ public class UiEditScore extends JFrame{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		UiEditScore ues = new UiEditScore();
+		UiGradingCriteria ues = new UiGradingCriteria();
 	}
 
 }

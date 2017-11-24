@@ -19,7 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public class UiGradingCriteria extends JFrame implements ActionListener {
+public class Uiunfinish extends JFrame implements ActionListener {
 	JPanel panel11;
 	JPanel panel12;
 	JPanel panel13;
@@ -42,7 +42,7 @@ public class UiGradingCriteria extends JFrame implements ActionListener {
 	ImageIcon img;
 	static int line;
 
-	public UiGradingCriteria() {
+	public Uiunfinish() {
 		this.setLayout(new BorderLayout());
 		mainPanel1p = new JPanel(new BorderLayout());
 		mainPanel1p.setBackground(new Color(255, 193, 37));
@@ -123,6 +123,6 @@ public class UiGradingCriteria extends JFrame implements ActionListener {
 
 	}
 	public static void main(String[] args) {
-		UiGradingCriteria ugc = new UiGradingCriteria();
+		Uiunfinish ugc = new Uiunfinish();
 	}
 }
