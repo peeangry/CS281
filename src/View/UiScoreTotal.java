@@ -87,7 +87,7 @@ public class UiScoreTotal extends JFrame{
 		panel33.setBackground(Color.WHITE);
 		save = new JButton("SAVE");
 		
-		String[] column = {"ID STUDENT", "SCORE", "MIDTERM", "FINAL"};
+		String[] column = {"ID STUDENT", "SCORE", "MIDTERM", "FINAL","TOTAL"};
 		
 		Object[][] data = {
 				{

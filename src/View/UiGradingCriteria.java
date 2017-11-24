@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,115 +15,164 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 
-public class UiGradingCriteria extends JFrame implements ActionListener {
+import Control.HomePage;
+
+public class UiEditScore extends JFrame{
 	JPanel panel11;
 	JPanel panel12;
 	JPanel panel13;
 	JPanel panel2;
+	JPanel panel3;
 	JPanel panel31;
 	JPanel panel32;
 	JPanel panel33;
+	JPanel panel34;
+	JPanel panel4;
 	JPanel mainPanel1;
 	JPanel mainPanel1p;
 	JPanel mainPanel3;
+	JPanel mainPanel3p;
 	JLabel head;
 	JLabel thammasat;
 	JLabel picLabel;
-	JButton back;
-	JButton open;
-	JButton save;
-	JTextArea txt;
-	JTextField txt1;
-	JScrollPane sp;
+	JLabel midterm;
+	JLabel final1;
+	JLabel reward;
+	JLabel scoremid;
+	JLabel scorefin;
+	JLabel scorere;
+	JLabel pop;
 	ImageIcon img;
-	static int line;
-
-	public UiGradingCriteria() {
+	JButton back;
+	JButton edit;
+	JButton save;
+	JTextField midtxt;
+	JTextField finaltxt;
+	JTextField retxt;
+	
+	public UiEditScore(){
 		this.setLayout(new BorderLayout());
 		mainPanel1p = new JPanel(new BorderLayout());
-		mainPanel1p.setBackground(new Color(255, 193, 37));
+		mainPanel1p.setBackground(new Color(255,193,37));
 		mainPanel1 = new JPanel(new GridLayout(2, 1));
-		mainPanel1.setBackground(new Color(255, 193, 37));
+		mainPanel1.setBackground(new Color(255,193,37));
 		mainPanel1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		panel11 = new JPanel();
-		panel11.setBackground(new Color(255, 193, 37));
+		panel11.setBackground(new Color(255,193,37));
 		panel12 = new JPanel();
-		panel12.setBackground(new Color(255, 193, 37));
+		panel12.setBackground(new Color(255,193,37));
 		panel13 = new JPanel();
-		panel13.setBackground(new Color(255, 193, 37));
+		panel13.setBackground(new Color(255,193,37));
 		panel13.setBorder(BorderFactory.createEmptyBorder(1, 10, 1, 10));
 		head = new JLabel("OFFICE OF THE REGISTRAION");
 		head.setForeground(Color.WHITE);
-		head.setFont(new Font("tahoma", Font.BOLD, 42));
+		head.setFont(new Font("tahoma",Font.BOLD,42));
 		thammasat = new JLabel("THAMMASAT UNIVERSITY");
 		thammasat.setForeground(Color.WHITE);
-		thammasat.setFont(new Font("tahoma", Font.BOLD, 28));
+		thammasat.setFont(new Font("tahoma",Font.BOLD,28));
 		img = new ImageIcon("Thammasat.png");
 		picLabel = new JLabel(img);
 		panel2 = new JPanel();
-		panel2.setBackground(new Color(255, 236, 139));
+		panel2.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		panel2.setBackground(new Color(255,236,139));
 		back = new JButton("BACK");
 		back.setPreferredSize(new Dimension(175, 50));
-		back.setBackground(new Color(255, 127, 0));
-		back.setFont(new Font("tahoma", Font.BOLD, 16));
-		mainPanel3 = new JPanel(new GridLayout(3, 1));
+		back.setBackground(new Color(255,127,0));
+		back.setFont(new Font("tahoma",Font.BOLD,16));
+		mainPanel3 = new JPanel(
+				);
 		mainPanel3.setBackground(Color.WHITE);
-		mainPanel3.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-		panel31 = new JPanel();
+		mainPanel3p = new JPanel(new BorderLayout());
+		mainPanel3p.setBackground(Color.WHITE);
+		panel31 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel31.setBackground(Color.WHITE);
+		pop = new JLabel("Proportion of points :");
+		pop.setFont(new Font("tahoma",Font.BOLD,28));
 		panel32 = new JPanel();
 		panel32.setBackground(Color.WHITE);
+		reward = new JLabel("REWARD POINT : ");
+		reward.setFont(new Font("tahoma",Font.BOLD,18));
+		retxt = new JTextField(5);
+		scorere = new JLabel("    SCORE");
+		scorere.setFont(new Font("tahoma",Font.BOLD,18));
+		midterm = new JLabel("MIDTERM :    ");
+		midterm.setFont(new Font("tahoma",Font.BOLD,18));
+		midtxt = new JTextField(5);
+		scoremid = new JLabel("   SCORE");
+		scoremid.setFont(new Font("tahoma",Font.BOLD,18));
 		panel33 = new JPanel();
-		panel33.setBackground(Color.white);
-//		txt = new JTextArea();
-//		txt.setBorder(new LineBorder(Color.BLACK));
-//		txt.setEditable(false);
-//		sp = new JScrollPane(txt);
-//		sp.setPreferredSize(new Dimension(400, 140));
-//		open = new JButton("OPEN File To Server");
-//		txt1 = new JTextField(25);
-//		save = new JButton("SAVE File To Server");
-
+		panel33.setBackground(Color.WHITE);
+		final1 = new JLabel("       FINAL :    ");
+		final1.setFont(new Font("tahoma",Font.BOLD,18));
+		finaltxt = new JTextField(5);
+		scorefin = new JLabel("   SCORE");
+		scorefin.setFont(new Font("tahoma",Font.BOLD,18));
+		panel34 = new JPanel();
+		panel34.setBackground(Color.WHITE);
+		panel4 = new JPanel();
+		panel4.setBackground(Color.WHITE);
+		edit = new JButton("EDIT");
+		save = new  JButton("SAVE");
+		
 		panel11.add(head);
 		panel12.add(thammasat);
 		panel13.add(picLabel);
-		mainPanel1.add(panel11, BorderLayout.CENTER);
-		mainPanel1.add(panel12, BorderLayout.SOUTH);
-		mainPanel1p.add(panel13, BorderLayout.WEST);
+		mainPanel1.add(panel11,BorderLayout.CENTER);
+		mainPanel1.add(panel12,BorderLayout.SOUTH);
+		mainPanel1p.add(panel13,BorderLayout.WEST);
 		mainPanel1p.add(mainPanel1);
 		this.add(mainPanel1p, BorderLayout.NORTH);
-
+		
 		panel2.add(back);
-		this.add(panel2, BorderLayout.WEST);
-//
-//		panel31.add(sp);
-//		panel32.add(open);
-//		panel32.add(txt1);
-		// panel33.add(save);
-		mainPanel3.add(panel31);
+		
+		//mainPanel3.setLayout(new BorderLayout());
+		panel31.add(pop);
+		panel32.add(reward);
+		panel32.add(retxt);
+		panel32.add(scorere);
+		panel33.add(midterm);
+		panel33.add(midtxt);
+		panel33.add(scoremid);
+		panel34.add(final1);
+		panel34.add(finaltxt);
+		panel34.add(scorefin);
+		panel4.add(edit);
+		panel4.add(save);
+		//mainPanel3.add(panel31);
 		mainPanel3.add(panel32);
 		mainPanel3.add(panel33);
-		this.add(mainPanel3, BorderLayout.CENTER);
-
+		mainPanel3.add(panel34);
+		mainPanel3p.add(panel31,BorderLayout.NORTH);
+		mainPanel3p.add(mainPanel3,BorderLayout.CENTER);
+		mainPanel3p.add(panel4,BorderLayout.SOUTH);
+		this.add(mainPanel3p);
+	
+		back.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dispose();
+				HomePage.back();
+			}
+		});
+		
+		this.setBackground(new Color(255,236,139));
+		this.add(mainPanel1p,BorderLayout.NORTH);
+		this.add(panel2,BorderLayout.WEST);
+		this.add(mainPanel3p,BorderLayout.CENTER);
 		this.setResizable(false);
-		setSize(1000, 800);
 		setTitle("THAMMASAT UNIVERSITY");
+		setSize(1000,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		System.out.println("5555");
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-	}
 	public static void main(String[] args) {
-		UiGradingCriteria ugc = new UiGradingCriteria();
+		// TODO Auto-generated method stub
+		UiEditScore ues = new UiEditScore();
 	}
+
 }
