@@ -22,6 +22,7 @@ import javax.swing.table.JTableHeader;
 
 import Control.HomePage;
 import Model.FileConection;
+import Model.Student;
 
 public class UiShowGrade extends JFrame{
 	
@@ -44,6 +45,7 @@ public class UiShowGrade extends JFrame{
 	JButton back;
 	JButton edit;
 	JButton save;
+	JButton load;
 	String roll;
 	int rows;
 	public UiShowGrade(){
@@ -88,18 +90,12 @@ public class UiShowGrade extends JFrame{
 		grade.setFont(new Font("tahoma",Font.BOLD,28));
 		edit = new JButton("EDIT");
 		save = new JButton("SAVE");
+		load = new JButton("LOAD");
 		roll = FileConection.getTable();
 		
 		String[] column = {"ID STUDENT", "SCORE", "GRADE"};
 		
-		Object[][] data = {
-				{
-					//"01", "85", "A"
-				},
-				{
-					//"02", "54", "C"
-				}
-		};
+		
 		
 		rows = Integer.parseInt(roll);
 		//JTable table = new JTable(rows,3);
@@ -109,6 +105,8 @@ public class UiShowGrade extends JFrame{
 		table_model = new DefaultTableModel(column,rows);
 		table = new JTable(table_model);
 		JScrollPane tableScroll = new JScrollPane ( table );
+		
+		
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -125,11 +123,24 @@ public class UiShowGrade extends JFrame{
 		panel31.add(grade);
 		panel32.add(table.getTableHeader(), BorderLayout.PAGE_START );
 		panel32.add(tableScroll);
+		panel33.add(load);
 		panel33.add(edit);
 		panel33.add(save);
 		mainPanel3.add(panel31,BorderLayout.NORTH);
 		mainPanel3.add(panel32,BorderLayout.CENTER);
 		mainPanel3.add(panel33,BorderLayout.SOUTH);
+		load.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				for(int i=0;i<rows;i++) {
+				
+					table.setValueAt(FileConection.GetId(), i, 0);
+					
+				}
+			}
+		});
 		back.addActionListener(new ActionListener() {
 			//test gitHub
 			@Override

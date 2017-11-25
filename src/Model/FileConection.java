@@ -93,6 +93,32 @@ public class FileConection {
 		}
 
 	}
+	public static String GetId() {
+		String so = null;
+		try {
+			f = new File("List.txt");
+			FileReader fr = new FileReader(f);
+			BufferedReader reader = new BufferedReader(fr);
+			
+			do {
+				so = reader.readLine();
+				if (so != null) {
+					return so;
+				}
+			} while (so != null);
+			reader.close();
+			fr.close();
+			
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.getMessage();
+			
+		}
+		return null;
+	}
+	
+	
 
 
 	public static boolean saveFileExport() {
@@ -134,7 +160,7 @@ public class FileConection {
 
 		try {
 			f = new File("Table.txt");
-			FileWriter fw = new FileWriter(f);
+			FileWriter fw = new FileWriter(f,false);
 			PrintWriter writer = new PrintWriter(fw);
 			writer.println(FileConection.getSize(a));
 			writer.close();
@@ -208,6 +234,21 @@ public class FileConection {
 					return false;
 				}
 				Point.cri.add(Double.parseDouble(str));
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean getScoreJtable() {
+		try (Scanner sc = new Scanner(new File("ScoreTable.txt"))) {
+			Point.score = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				if (str.equals("")) {
+					return false;
+				}
+				Point.score.add(Double.parseDouble(str));
 			}
 			return true;
 		} catch (FileNotFoundException | NumberFormatException e) {

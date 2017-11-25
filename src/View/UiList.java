@@ -21,6 +21,7 @@ import javax.swing.border.LineBorder;
 
 import Control.HomePage;
 import Model.FileConection;
+import Model.Student;
 
 public class UiList extends JFrame implements ActionListener{
 	JPanel panel11;
@@ -120,6 +121,7 @@ public class UiList extends JFrame implements ActionListener{
 					FileConection.saveFileToServer(txt);
 					line=FileConection.getSize(txt);
 					FileConection.saveTable(txt);
+					Student.setStuid(txt.getText());
 			}
 		});
 		

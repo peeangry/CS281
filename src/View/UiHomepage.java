@@ -128,8 +128,8 @@ public class UiHomepage extends JFrame {
 		mainPanel2.add(tea);
 		mainPanel2.add(editG);
 		mainPanel2.add(Criteria);
-		mainPanel2.add(TotalScore);
 		mainPanel2.add(FillScore);
+		mainPanel2.add(TotalScore);
 		mainPanel2.add(exportG);
 		this.add(mainPanel2, BorderLayout.WEST);
 		;
@@ -182,7 +182,7 @@ public class UiHomepage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				dispose();
-				HomePage.Fill();
+				HomePage.Total();
 			}
 		});
 		Criteria.addActionListener(new ActionListener() {
