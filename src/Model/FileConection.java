@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -93,33 +94,18 @@ public class FileConection {
 		}
 
 	}
-	public static String GetId() {
-		String so = null;
-		try {
-			f = new File("List.txt");
-			FileReader fr = new FileReader(f);
-			BufferedReader reader = new BufferedReader(fr);
-			
-			do {
-				so = reader.readLine();
-				if (so != null) {
-					return so;
-				}
-			} while (so != null);
-			reader.close();
-			fr.close();
-			
-
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.getMessage();
-			
+	public static boolean GetId() {
+		try (Scanner sc = new Scanner(new File("List.txt"))) {
+			Point.lis = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.lis.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
 		}
-		return null;
 	}
-	
-	
-
 
 	public static boolean saveFileExport() {
 

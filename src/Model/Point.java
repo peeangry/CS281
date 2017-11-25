@@ -6,10 +6,12 @@ import javax.swing.JOptionPane;
 
 import View.UiGradingCriteria;
 import View.UiScoreG;
+import View.UiScoreTotal;
 
 public class Point {
 	static ArrayList<Double> score = new ArrayList<>();
 	static ArrayList<Double> cri = new ArrayList<>();
+	static ArrayList<String> lis = new ArrayList<>();
 	public static boolean checkPoint() {
 		if (UiScoreG.getA1() <= UiScoreG.getA0()) {
 			UiScoreG.setA1();
@@ -109,4 +111,19 @@ public class Point {
 	public static double getCri(int i) {
 		return cri.get(i);
 	}
+	public static void keepListId() {
+		lis = new ArrayList<>();
+		String str = "";
+		for (int i = 0; i < lis.size(); i++) {
+			str += lis.get(i) + "\n";
+		}
+		if(FileConection.saveCriteriaToFile(str)) {
+			JOptionPane.showMessageDialog(null, "Success to Load Id by server", "Success",
+					JOptionPane.INFORMATION_MESSAGE);	
+		}
+	}
+	public static String getListId(int i) {
+		return lis.get(i);
+	}
 }
+

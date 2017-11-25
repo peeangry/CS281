@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Control.HomePage;
 import Model.FileConection;
+import Model.Point;
 
 public class UiScoreTotal extends JFrame{
 	JPanel panel11;
@@ -42,6 +43,7 @@ public class UiScoreTotal extends JFrame{
 	ImageIcon img;
 	JButton back;
 	JButton save;
+	JButton load;
 	String roll;
 	int rows;
 	
@@ -86,6 +88,7 @@ public class UiScoreTotal extends JFrame{
 		panel33 = new JPanel(new FlowLayout());
 		panel33.setBackground(Color.WHITE);
 		save = new JButton("SAVE");
+		load = new JButton("LOAD");
 		
 		String[] column = {"ID STUDENT", "SCORE", "MIDTERM", "FINAL","TOTAL"};
 		
@@ -122,6 +125,7 @@ public class UiScoreTotal extends JFrame{
 		panel31.add(total);
 		panel32.add(table.getTableHeader(), BorderLayout.PAGE_START );
 		panel32.add(tableScroll);
+		panel33.add(load);
 		panel33.add(save);
 		mainPanel3.add(panel31,BorderLayout.NORTH);
 		mainPanel3.add(panel32,BorderLayout.CENTER);
@@ -133,6 +137,19 @@ public class UiScoreTotal extends JFrame{
 				// TODO Auto-generated method stub
 				dispose();
 				HomePage.back();
+			}
+		});
+		load.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < rows; i++) {
+					System.out.println(FileConection.GetId());
+					if (FileConection.GetId()) {
+						table.setValueAt(Point.getListId(i), i, 0);
+					}
+				}
 			}
 		});
 		
