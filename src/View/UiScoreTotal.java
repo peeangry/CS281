@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Control.HomePage;
+import Model.CalculateGrade;
 import Model.FileConection;
 import Model.Point;
 
@@ -46,8 +47,9 @@ public class UiScoreTotal extends JFrame {
 	JButton save;
 	JButton load;
 	JButton reset;
+	JButton Calculate;
 	String roll;
-	int rows;
+	public static int rows;
 	static ArrayList<String> stQuiz1 = new ArrayList<>();
 	static ArrayList<String> stMid = new ArrayList<>();
 	static ArrayList<String> stFinal = new ArrayList<>();
@@ -96,6 +98,7 @@ public class UiScoreTotal extends JFrame {
 		save = new JButton("SAVE");
 		load = new JButton("LOAD");
 		reset = new JButton("Reset");
+		Calculate = new JButton("Calculate");
 
 		String[] column = { "ID STUDENT", "Quiz SCORE", "MIDTERM", "FINAL", "TOTAL" };
 
@@ -132,6 +135,7 @@ public class UiScoreTotal extends JFrame {
 		panel33.add(load);
 		panel33.add(save);
 		panel33.add(reset);
+		panel33.add(Calculate);
 		mainPanel3.add(panel31, BorderLayout.NORTH);
 		mainPanel3.add(panel32, BorderLayout.CENTER);
 		mainPanel3.add(panel33, BorderLayout.SOUTH);
@@ -175,13 +179,13 @@ public class UiScoreTotal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < rows; i++) {
-					stQuiz1.add((String) table.getValueAt(i, 1));
+					stQuiz1.add(table.getValueAt(i, 1)+"");
 					Point.arQuiz.add(stQuiz1.get(i));
-					stMid.add((String) table.getValueAt(i, 2));
+					stMid.add(table.getValueAt(i, 2)+"");
 					Point.arMid.add(stMid.get(i));
-					stFinal.add((String) table.getValueAt(i, 3));
+					stFinal.add(table.getValueAt(i, 3)+"");
 					Point.arFin.add(stFinal.get(i));
-					stTotal.add((String) table.getValueAt(i, 4));
+					stTotal.add(table.getValueAt(i, 4)+"");
 					Point.arTotal.add(stTotal.get(i));
 				}
 				Point.keepQuiz();
@@ -198,9 +202,9 @@ public class UiScoreTotal extends JFrame {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < rows; i++) {
 					table.setValueAt(Point.getListId(i), i, 0);
-					table.setValueAt(0, i, 1);
-					table.setValueAt(0, i, 2);
-					table.setValueAt(0, i, 3);
+					table.setValueAt(i, i, 1);
+					table.setValueAt(i, i, 2);
+					table.setValueAt(i, i, 3);
 					table.setValueAt(0, i, 4);
 				}
 			}
@@ -209,11 +213,22 @@ public class UiScoreTotal extends JFrame {
 			if (FileConection.GetId()) {
 				table.setValueAt(Point.getListId(i), i, 0);
 			}
-			table.setValueAt(0, i, 1);
-			table.setValueAt(0, i, 2);
-			table.setValueAt(0, i, 3);
+			table.setValueAt(i, i, 1);
+			table.setValueAt(i, i, 2);
+			table.setValueAt(i, i, 3);
 			table.setValueAt(0, i, 4);
 		}
+		Calculate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new CalculateGrade();
+				for (int i = 0; i < rows; i++) {
+					table.setValueAt(CalculateGrade.getCalculate(i), i, 4);
+				}
+			}
+		});
 		this.setBackground(new Color(255, 236, 139));
 		this.add(mainPanel1p, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.WEST);
