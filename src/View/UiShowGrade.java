@@ -23,7 +23,7 @@ import javax.swing.table.JTableHeader;
 import Control.HomePage;
 import Model.FileConection;
 import Model.Point;
-import Model.Student;
+
 
 public class UiShowGrade extends JFrame {
 
@@ -136,7 +136,9 @@ public class UiShowGrade extends JFrame {
 					System.out.println(FileConection.GetId());
 					if (FileConection.GetId()) {
 						table.setValueAt(Point.getListId(i), i, 0);
-					}
+					}if(FileConection.GetTotal()) {						
+						table.setValueAt(Point.getTotal(i), i, 1);
+					}	
 				}
 			}
 		});
@@ -149,7 +151,14 @@ public class UiShowGrade extends JFrame {
 				HomePage.back();
 			}
 		});
-
+		for (int i = 0; i < rows; i++) {
+			if (FileConection.GetId()) {
+				table.setValueAt(Point.getListId(i), i, 0);
+			}
+			table.setValueAt(0, i, 1);
+			table.setValueAt("-", i, 2);
+			
+		}
 		this.setBackground(new Color(255, 236, 139));
 		this.add(mainPanel1p, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.WEST);

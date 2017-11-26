@@ -15,13 +15,14 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import View.UiExport;
 
 public class FileConection {
-	static JFileChooser jf = new JFileChooser("C:\\Users\\User\\Desktop");
+	static JFileChooser jf = new JFileChooser(".");
 	static File f;
 
 	public static boolean openFile(JTextArea a) {
@@ -93,18 +94,6 @@ public class FileConection {
 			return false;
 		}
 
-	}
-	public static boolean GetId() {
-		try (Scanner sc = new Scanner(new File("List.txt"))) {
-			Point.lis = new ArrayList<>();
-			while (sc.hasNextLine()) {
-				String str = sc.nextLine();
-				Point.lis.add(str);
-			}
-			return true;
-		} catch (FileNotFoundException | NumberFormatException e) {
-			return false;
-		}
 	}
 
 	public static boolean saveFileExport() {
@@ -188,13 +177,13 @@ public class FileConection {
 	
 	public static boolean getPoint() {
 		try (Scanner sc = new Scanner(new File("Score.txt"))) {
-			Point.score = new ArrayList<>();
+			Point.arScore = new ArrayList<>();
 			while (sc.hasNextLine()) {
 				String str = sc.nextLine();
 				if (str.equals("")) {
 					return false;
 				}
-				Point.score.add(Double.parseDouble(str));
+				Point.arScore.add(Double.parseDouble(str));
 			}
 			return true;
 		} catch (FileNotFoundException | NumberFormatException e) {
@@ -213,13 +202,13 @@ public class FileConection {
 	}
 	public static boolean getCriteria() {
 		try (Scanner sc = new Scanner(new File("Criteria.txt"))) {
-			Point.cri = new ArrayList<>();
+			Point.arCri = new ArrayList<>();
 			while (sc.hasNextLine()) {
 				String str = sc.nextLine();
 				if (str.equals("")) {
 					return false;
 				}
-				Point.cri.add(Double.parseDouble(str));
+				Point.arCri.add(Double.parseDouble(str));
 			}
 			return true;
 		} catch (FileNotFoundException | NumberFormatException e) {
@@ -228,17 +217,142 @@ public class FileConection {
 	}
 	public static boolean getScoreJtable() {
 		try (Scanner sc = new Scanner(new File("ScoreTable.txt"))) {
-			Point.score = new ArrayList<>();
+			Point.arScore = new ArrayList<>();
 			while (sc.hasNextLine()) {
 				String str = sc.nextLine();
 				if (str.equals("")) {
 					return false;
 				}
-				Point.score.add(Double.parseDouble(str));
+				Point.arScore.add(Double.parseDouble(str));
 			}
 			return true;
 		} catch (FileNotFoundException | NumberFormatException e) {
 			return false;
 		}
 	}
+	public static boolean GetId() {
+		try (Scanner sc = new Scanner(new File("List.txt"))) {
+			Point.arLis = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arLis.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean GetMidterm() {
+		try (Scanner sc = new Scanner(new File("Midterm.txt"))) {
+			Point.arMid = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arMid.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean GetFinal() {
+		try (Scanner sc = new Scanner(new File("Final.txt"))) {
+			Point.arFin = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arFin.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean GetQuiz() {
+		try (Scanner sc = new Scanner(new File("Quiz.txt"))) {
+			Point.arQuiz = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arQuiz.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean GetTotal() {
+		try (Scanner sc = new Scanner(new File("Total.txt"))) {
+			Point.arTotal = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arTotal.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean GetGrade() {
+		try (Scanner sc = new Scanner(new File("Grade.txt"))) {
+			Point.arGrade = new ArrayList<>();
+			while (sc.hasNextLine()) {
+				String str = sc.nextLine();
+				Point.arGrade.add(str);
+			}
+			return true;
+		} catch (FileNotFoundException | NumberFormatException e) {
+			return false;
+		}
+	}
+	public static boolean saveMidtermToFile(String a) {
+		try (FileWriter fw = new FileWriter("Midterm.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	public static boolean saveFinalToFile(String a) {
+		try (FileWriter fw = new FileWriter("Final.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	public static boolean saveQuizToFile(String a) {
+		try (FileWriter fw = new FileWriter("Quiz.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+		
+	}
+
+	public static boolean saveTotalToFile(String a) {
+		try (FileWriter fw = new FileWriter("Total.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+	public static boolean saveGradeToFile(String a) {
+		try (FileWriter fw = new FileWriter("Grade.txt", false);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			out.print(a);
+		} catch (IOException e) {
+			return false;
+		}
+		return true;
+	}
+
 }
