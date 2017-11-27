@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Control.HomePage;
 import Model.CalculateGrade;
+import Model.CalculateScore;
 import Model.FileConection;
 import Model.Point;
 
@@ -100,7 +101,7 @@ public class UiScoreTotal extends JFrame {
 		reset = new JButton("Reset");
 		Calculate = new JButton("Calculate");
 
-		String[] column = { "ID STUDENT", "Quiz SCORE", "MIDTERM", "FINAL", "TOTAL" };
+		String[] column = { "ID STUDENT", "Quiz SCORE"+"("+UiGradingCriteria.getRe()+")", "MIDTERM"+"("+UiGradingCriteria.getMid()+")", "FINAL"+"("+UiGradingCriteria.getFin()+")", "TOTAL" };
 
 		Object[][] data = { {
 				// "01", "85", "A"
@@ -153,6 +154,7 @@ public class UiScoreTotal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Calculate.setEnabled(true);
 				for (int i = 0; i < rows; i++) {
 					// System.out.println(FileConection.GetId());
 					if (FileConection.GetId()) {
@@ -171,12 +173,18 @@ public class UiScoreTotal extends JFrame {
 						}
 					}
 				}
+//				if(FileConection.getPoint()) {
+//					for (int i = 0; i <= Point.arScore.size(); i++) {
+//						System.out.println(Point.getPoint(i));
+//					}
+//				}
 			}
 		});
 		save.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				load.setEnabled(true);
 				// TODO Auto-generated method stub
 				for (int i = 0; i < rows; i++) {
 					stQuiz1.add(table.getValueAt(i, 1)+"");
@@ -223,12 +231,16 @@ public class UiScoreTotal extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				new CalculateGrade();
+				new CalculateScore();
 				for (int i = 0; i < rows; i++) {
-					table.setValueAt(CalculateGrade.getCalculate(i), i, 4);
+					table.setValueAt(CalculateScore.getCalculate(i), i, 4);
+					
 				}
+			
 			}
 		});
+		Calculate.setEnabled(false);
+		load.setEnabled(false);
 		this.setBackground(new Color(255, 236, 139));
 		this.add(mainPanel1p, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.WEST);

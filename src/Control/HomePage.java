@@ -14,6 +14,7 @@ import View.UiScoreTotal;
 public class HomePage  {
 	public static void back() {
 		UiHomepage ui = new UiHomepage();
+		
 	}
 	public static void editGrade() {
 		UiScoreG us = new UiScoreG();//Score

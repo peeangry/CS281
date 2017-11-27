@@ -134,6 +134,9 @@ public class UiGradingCriteria extends JFrame{
 			
 		}
 		
+		retxt.setText(re + "");
+		midtxt.setText(mid+"");
+		finaltxt.setText(fin+"");
 		
 		panel11.add(head);
 		panel12.add(thammasat);
@@ -220,10 +223,6 @@ public class UiGradingCriteria extends JFrame{
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		UiGradingCriteria ues = new UiGradingCriteria();
-	}
 
 	public static double getMid() {
 		return mid;
@@ -235,6 +234,10 @@ public class UiGradingCriteria extends JFrame{
 
 	public static double getRe() {
 		return re;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		UiGradingCriteria ues = new UiGradingCriteria();
 	}
 
 	

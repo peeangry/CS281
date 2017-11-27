@@ -116,6 +116,7 @@ public class UiHomepage extends JFrame {
 		panel32 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel32.setBackground(Color.WHITE);
 		
+		
 		panel11.add(head);
 		panel12.add(thammasat);
 		panel13.add(picLabel);
@@ -194,7 +195,6 @@ public class UiHomepage extends JFrame {
 				HomePage.Criteria();
 			}
 		});
-		
 		
 		pack();
 		setTitle("THAMMASAT UNIVERSITY");

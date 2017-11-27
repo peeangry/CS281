@@ -1,3 +1,4 @@
+
 package View;
 
 import java.awt.BorderLayout;
@@ -21,9 +22,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 import Control.HomePage;
+import Model.CalculateGrade;
+import Model.CalculateScore;
 import Model.FileConection;
 import Model.Point;
-
 
 public class UiShowGrade extends JFrame {
 
@@ -47,6 +49,7 @@ public class UiShowGrade extends JFrame {
 	JButton edit;
 	JButton save;
 	JButton load;
+	JButton Calculate;
 	String roll;
 	int rows;
 
@@ -93,6 +96,7 @@ public class UiShowGrade extends JFrame {
 		edit = new JButton("EDIT");
 		save = new JButton("SAVE");
 		load = new JButton("LOAD");
+		Calculate = new JButton("Calculate");
 		roll = FileConection.getTable();
 
 		String[] column = { "ID STUDENT", "SCORE", "GRADE" };
@@ -124,6 +128,7 @@ public class UiShowGrade extends JFrame {
 		panel33.add(load);
 		panel33.add(edit);
 		panel33.add(save);
+		panel33.add(Calculate);
 		mainPanel3.add(panel31, BorderLayout.NORTH);
 		mainPanel3.add(panel32, BorderLayout.CENTER);
 		mainPanel3.add(panel33, BorderLayout.SOUTH);
@@ -133,12 +138,13 @@ public class UiShowGrade extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < rows; i++) {
-					System.out.println(FileConection.GetId());
+					//System.out.println(FileConection.GetId());
 					if (FileConection.GetId()) {
 						table.setValueAt(Point.getListId(i), i, 0);
-					}if(FileConection.GetTotal()) {						
-						table.setValueAt(Point.getTotal(i), i, 1);
-					}	
+					}
+					if (FileConection.GetTotal()) {
+						table.setValueAt(CalculateScore.getCalculate(i), i, 1);
+					}
 				}
 			}
 		});
@@ -151,13 +157,27 @@ public class UiShowGrade extends JFrame {
 				HomePage.back();
 			}
 		});
+		Calculate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				new CalculateGrade();
+				for (int i = 0; i < rows+9; i++) {
+					//System.out.println(FileConection.GetGrade());
+					//if (FileConection.GetGrade()) {
+					table.setValueAt(CalculateGrade.getGrade(i), i, 2);
+					//}
+				}
+			}
+		});
 		for (int i = 0; i < rows; i++) {
 			if (FileConection.GetId()) {
 				table.setValueAt(Point.getListId(i), i, 0);
 			}
-			table.setValueAt(0, i, 1);
-			table.setValueAt("-", i, 2);
-			
+//			table.setValueAt(0, i, 1);
+//			table.setValueAt("-", i, 2);
+
 		}
 		this.setBackground(new Color(255, 236, 139));
 		this.add(mainPanel1p, BorderLayout.NORTH);
