@@ -132,7 +132,8 @@ public class UiExport extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileConection.OPENFileToServer(txt1);
+				//FileConection.OPENFileToServer(txt1);
+				//FileConection.WirteFileToExport(txt1);
 				export1.setEnabled(true);
 				if(FileConection.getPath()==null) {
 					JOptionPane.showMessageDialog(null,"File is null ","Invalid File ",JOptionPane.ERROR_MESSAGE);

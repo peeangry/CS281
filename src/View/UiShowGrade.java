@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -49,10 +50,10 @@ public class UiShowGrade extends JFrame {
 	JButton edit;
 	JButton save;
 	JButton load;
-	JButton Calculate;
+	//JButton Calculate;
 	String roll;
 	int rows;
-
+	static ArrayList<String> stGrade = new ArrayList<>();
 	public UiShowGrade() {
 		this.setLayout(new BorderLayout());
 
@@ -96,7 +97,7 @@ public class UiShowGrade extends JFrame {
 		edit = new JButton("EDIT");
 		save = new JButton("SAVE");
 		load = new JButton("LOAD");
-		Calculate = new JButton("Calculate");
+		//Calculate = new JButton("Calculate");
 		roll = FileConection.getTable();
 
 		String[] column = { "ID STUDENT", "SCORE", "GRADE" };
@@ -128,7 +129,7 @@ public class UiShowGrade extends JFrame {
 		panel33.add(load);
 		panel33.add(edit);
 		panel33.add(save);
-		panel33.add(Calculate);
+		//panel33.add(Calculate);
 		mainPanel3.add(panel31, BorderLayout.NORTH);
 		mainPanel3.add(panel32, BorderLayout.CENTER);
 		mainPanel3.add(panel33, BorderLayout.SOUTH);
@@ -146,6 +147,23 @@ public class UiShowGrade extends JFrame {
 						table.setValueAt(CalculateScore.getCalculate(i), i, 1);
 					}
 				}
+				CalculateGrade c =new CalculateGrade();
+				for (int i = 0; i < rows; i++) {
+					table.setValueAt(c.getGrade(i), i, 2);
+					
+				}
+			}
+		});
+		save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				for (int i = 0; i < rows; i++) {
+					stGrade.add(table.getValueAt(i, 2)+"");
+					Point.arGrade.add(stGrade.get(i));
+				}
+				Point.keepGrade();
 			}
 		});
 		back.addActionListener(new ActionListener() {
@@ -157,20 +175,19 @@ public class UiShowGrade extends JFrame {
 				HomePage.back();
 			}
 		});
-		Calculate.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				new CalculateGrade();
-				for (int i = 0; i < rows+9; i++) {
-					//System.out.println(FileConection.GetGrade());
-					//if (FileConection.GetGrade()) {
-					table.setValueAt(CalculateGrade.getGrade(i), i, 2);
-					//}
-				}
-			}
-		});
+//		Calculate.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				// TODO Auto-generated method stub
+////				CalculateGrade c =new CalculateGrade();
+////				for (int i = 0; i < rows; i++) {
+////					table.setValueAt(c.getGrade(i), i, 2);
+////					
+////				}
+//				
+//			}
+//		});
 		for (int i = 0; i < rows; i++) {
 			if (FileConection.GetId()) {
 				table.setValueAt(Point.getListId(i), i, 0);

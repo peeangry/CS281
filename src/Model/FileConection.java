@@ -95,6 +95,37 @@ public class FileConection {
 		}
 
 	}
+	public static boolean WirteFileToExport(JTextArea a) {
+
+		try {
+			f = new File("List.txt");
+			FileReader fr = new FileReader(f);
+			BufferedReader reader = new BufferedReader(fr);
+			File f1 = new File("Grade.txt");
+			FileReader fr1 = new FileReader(f1);
+			BufferedReader reader1 = new BufferedReader(fr);
+
+			String so,so1;
+			do {
+				so = reader.readLine();
+				so1 = reader1.readLine();
+				if (so != null||so1 != null) {
+					a.append(so +so1 +"\n");
+				}
+			} while (so != null||so1 != null);
+			reader.close();
+			reader1.close();
+			fr.close();
+			fr1.close();
+			return true;
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.getMessage();
+			return false;
+		}
+
+	}
 
 	public static boolean saveFileExport() {
 
@@ -355,4 +386,47 @@ public class FileConection {
 		return true;
 	}
 
+//	public void readTextFile() {
+//		ArrayList<String> t = new ArrayList<>();
+//		try {
+//			FileReader fr = new FileReader(new File("classlist.csv"));
+//			BufferedReader reader = new BufferedReader(fr);
+//			String s = reader.readLine();
+//			String ts = "";
+//			while (s != null) {
+//				String ss[] = s.split(",");
+//				if (ss.length != 0 && ss.length < 6) {
+//					String[] sss = ss[2].split(" ");
+//					for (int i = 0; i < sss.length; i++) {
+//						ts += sss[i] + ",";
+//					}
+//					t.add(ss[1] + "," + ts);
+//					ts = "";
+//				}
+//				s = reader.readLine();
+//			}
+//			reader.close();
+//			fr.close();
+//		} catch (FileNotFoundException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//
+//		try {
+//			FileWriter fw = new FileWriter(new File("Datascore" + subject + ".csv"));
+//			PrintWriter writer = new PrintWriter(fw);
+//			writer.println(getSubject());
+//			for (int i = 0; i < t.size(); i++) {
+//				writer.println(t.get(i));
+//			}
+//			fw.close();
+//			writer.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

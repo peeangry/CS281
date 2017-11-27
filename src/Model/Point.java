@@ -173,7 +173,7 @@ public class Point {
 			str += arGrade.get(i) + "\n";
 		}
 		if(FileConection.saveGradeToFile(str)) {
-			JOptionPane.showMessageDialog(null, "Success to Save Total Score to server", "Success",
+			JOptionPane.showMessageDialog(null, "Success to Save Grade to server", "Success",
 					JOptionPane.INFORMATION_MESSAGE);	
 		}
 	}
