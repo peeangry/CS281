@@ -33,6 +33,13 @@ public class UiHomepage extends JFrame {
 	JPanel panel24;
 	JPanel panel31;
 	JPanel panel32;
+	JPanel panel33;
+	JPanel panel34;
+	JPanel panel35;
+	JPanel panel36;
+	JPanel panel37;
+	JPanel panel38;
+	JPanel panel39;
 	JPanel mainPanel1;
 	JPanel mainPanel1p;
 	JPanel mainPanel2;
@@ -40,8 +47,14 @@ public class UiHomepage extends JFrame {
 	JLabel head;
 	JLabel id;
 	JLabel txt;
-	
 	JLabel idShow;
+	JLabel toturial;
+	JLabel one;
+	JLabel two;
+	JLabel three;
+	JLabel four;
+	JLabel five;
+	JLabel six;
 	JLabel thammasat;
 	JLabel picLabel;
 	JButton tea;
@@ -110,11 +123,39 @@ public class UiHomepage extends JFrame {
 		id.setFont(new Font("tahoma", Font.BOLD, 24));
 		idShow = new JLabel("Student ID : ");
 		idShow.setFont(new Font("tahoma", Font.BOLD, 26));
+		toturial = new JLabel("Toturial : Plese follow the process");
+		toturial.setFont(new Font("tahoma", Font.BOLD, 26));
+		one = new JLabel("1.List");
+		one.setFont(new Font("tahoma",Font.BOLD, 18));
+		two = new JLabel("2.Edit Grade");
+		two.setFont(new Font("tahoma", Font.BOLD, 18));
+		three = new JLabel("3.Grading Criteria");
+		three.setFont(new Font("tahoma", Font.BOLD, 18));
+		four = new JLabel("4.Fill Score");
+		four.setFont(new Font("tahoma", Font.BOLD, 18));
+		five = new JLabel("5.Total Score");
+		five.setFont(new Font("tahoma", Font.BOLD, 18));
+		six = new JLabel("6.Export");
+		six.setFont(new Font("tahoma", Font.BOLD, 18));
 		txt = new JLabel("Welcome! To EDUCATIONAL SERVICE SYSTEM ");
 		txt.setFont(new Font("tahoma",Font.BOLD,16));
 		mainPanel3 = new JPanel(new GridLayout(15, 1));
 		panel32 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		panel32.setBackground(Color.WHITE);
+		panel33 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel33.setBackground(Color.WHITE);
+		panel34 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel34.setBackground(Color.WHITE);
+		panel35 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel35.setBackground(Color.WHITE);
+		panel36 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel36.setBackground(Color.WHITE);
+		panel37 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel37.setBackground(Color.WHITE);
+		panel38 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel38.setBackground(Color.WHITE);
+		panel39 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		panel39.setBackground(Color.WHITE);
 		
 		
 		panel11.add(head);
@@ -137,8 +178,22 @@ public class UiHomepage extends JFrame {
 
 		panel31.add(id);
 		panel32.add(txt);
+		panel33.add(toturial);
+		panel34.add(one);
+		panel35.add(two);
+		panel36.add(three);
+		panel37.add(four);
+		panel38.add(five);
+		panel39.add(six);
 		mainPanel3.add(panel31);
 		mainPanel3.add(panel32);
+		mainPanel3.add(panel33);
+		mainPanel3.add(panel34);
+		mainPanel3.add(panel35);
+		mainPanel3.add(panel36);
+		mainPanel3.add(panel37);
+		mainPanel3.add(panel38);
+		mainPanel3.add(panel39);
 		mainPanel3.setBackground(Color.WHITE);
 		this.add(mainPanel3, BorderLayout.CENTER);
 		editG.addActionListener(new ActionListener() {
