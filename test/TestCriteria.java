@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.function.DoublePredicate;
 
 import javax.swing.JOptionPane;
 
@@ -96,6 +97,10 @@ class TestCriteria {
 		assertFalse(Point.CheckCriteria(a, b, c));
 	}
 	
-	
+	@Test
+	void testEmpty() {
+		String r = "", m = "", f = "";
+		assertFalse(Point.CheckEmptyCriteria(r, m, f));	
+	}
 
 }

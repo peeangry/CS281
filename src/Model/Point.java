@@ -205,14 +205,19 @@ public class Point {
 	public static double getPoint(int i) {
 		return arScore.get(i);
 	}
-	
 	public static boolean CheckCriteria(double reward, double midtm, double finaltm) {
 		if(reward + midtm + finaltm == 100.0) {
 			return true;
 		} else {
 			return false;
 		}
-		
+	}
+	public static boolean CheckEmptyCriteria(String reward, String midtm, String finaltm) {
+		if(!reward.isEmpty() && !midtm.isEmpty() && !finaltm.isEmpty()){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 }
