@@ -47,7 +47,7 @@ public class UiShowGrade extends JFrame {
 	JLabel grade;
 	ImageIcon img;
 	JButton back;
-	JButton edit;
+	//JButton edit;
 	JButton save;
 	JButton load;
 	//JButton Calculate;
@@ -94,7 +94,7 @@ public class UiShowGrade extends JFrame {
 		panel33.setBackground(Color.WHITE);
 		grade = new JLabel("Grade : ");
 		grade.setFont(new Font("tahoma", Font.BOLD, 28));
-		edit = new JButton("EDIT");
+		//edit = new JButton("EDIT");
 		save = new JButton("SAVE");
 		load = new JButton("LOAD");
 		//Calculate = new JButton("Calculate");
@@ -127,7 +127,7 @@ public class UiShowGrade extends JFrame {
 		panel32.add(table.getTableHeader(), BorderLayout.PAGE_START);
 		panel32.add(tableScroll);
 		panel33.add(load);
-		panel33.add(edit);
+		//panel33.add(edit);
 		panel33.add(save);
 		//panel33.add(Calculate);
 		mainPanel3.add(panel31, BorderLayout.NORTH);

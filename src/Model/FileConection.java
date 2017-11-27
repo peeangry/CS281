@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import View.UiExport;
+import View.UiScoreTotal;
 
 public class FileConection {
 	static JFileChooser jf = new JFileChooser(".");
@@ -104,13 +105,16 @@ public class FileConection {
 			File f1 = new File("Grade.txt");
 			FileReader fr1 = new FileReader(f1);
 			BufferedReader reader1 = new BufferedReader(fr);
-
+			int i=-1;
 			String so,so1;
+			CalculateGrade c = new CalculateGrade();
 			do {
 				so = reader.readLine();
 				so1 = reader1.readLine();
 				if (so != null||so1 != null) {
-					a.append(so +so1 +"\n");
+					++i;
+					a.append(so +"\t"+c.getGrade(i) +"\n");
+					//i++;
 				}
 			} while (so != null||so1 != null);
 			reader.close();
@@ -148,6 +152,31 @@ public class FileConection {
 				e1.getMessage();
 			}
 		}
+		return false;
+	}
+	public static boolean saveFileExport2() {
+
+		//int win = jf.showSaveDialog(null);
+		UiExport ue = new UiExport();
+		ue.dispose();
+	//	if (win == JFileChooser.APPROVE_OPTION) {
+			try {
+				File f = new File("Student Grade"+".csv");
+				FileWriter fw = new FileWriter(f, true);
+				PrintWriter writer = new PrintWriter(fw);
+				for (int i = 0; i < UiScoreTotal.rows; i++) {
+					if (FileConection.GetId()) {
+						writer.println(Point.getListId(i)+","+Point.getGrade(i));
+					}
+				}
+				writer.close();
+				fw.close();
+				return true;
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.getMessage();
+			}
+		//}
 		return false;
 	}
 
@@ -386,47 +415,5 @@ public class FileConection {
 		return true;
 	}
 
-//	public void readTextFile() {
-//		ArrayList<String> t = new ArrayList<>();
-//		try {
-//			FileReader fr = new FileReader(new File("classlist.csv"));
-//			BufferedReader reader = new BufferedReader(fr);
-//			String s = reader.readLine();
-//			String ts = "";
-//			while (s != null) {
-//				String ss[] = s.split(",");
-//				if (ss.length != 0 && ss.length < 6) {
-//					String[] sss = ss[2].split(" ");
-//					for (int i = 0; i < sss.length; i++) {
-//						ts += sss[i] + ",";
-//					}
-//					t.add(ss[1] + "," + ts);
-//					ts = "";
-//				}
-//				s = reader.readLine();
-//			}
-//			reader.close();
-//			fr.close();
-//		} catch (FileNotFoundException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//
-//		try {
-//			FileWriter fw = new FileWriter(new File("Datascore" + subject + ".csv"));
-//			PrintWriter writer = new PrintWriter(fw);
-//			writer.println(getSubject());
-//			for (int i = 0; i < t.size(); i++) {
-//				writer.println(t.get(i));
-//			}
-//			fw.close();
-//			writer.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 }

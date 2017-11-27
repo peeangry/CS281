@@ -240,7 +240,7 @@ public class UiScoreTotal extends JFrame {
 			}
 		});
 		Calculate.setEnabled(false);
-		load.setEnabled(false);
+		//load.setEnabled(false);
 		this.setBackground(new Color(255, 236, 139));
 		this.add(mainPanel1p, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.WEST);
