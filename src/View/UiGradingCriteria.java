@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -206,10 +207,14 @@ public class UiGradingCriteria extends JFrame{
 				retxt.setEditable(false);
 				midtxt.setEditable(false);
 				finaltxt.setEditable(false);
+				if(!retxt.getText().isEmpty() && !midtxt.getText().isEmpty() && !finaltxt.getText().isEmpty()) {
 				re = Double.parseDouble(retxt.getText());
 				mid = Double.parseDouble(midtxt.getText());
 				fin = Double.parseDouble(finaltxt.getText());
 				Point.keepCriteria();
+				} else {
+					JOptionPane.showMessageDialog(null, "Please Complete all values in the boxs!");
+				}
 			}
 		});
 		this.setBackground(new Color(255,236,139));

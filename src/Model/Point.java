@@ -101,13 +101,17 @@ public class Point {
 		arCri.add(UiGradingCriteria.getRe());
 		arCri.add(UiGradingCriteria.getFin());
 		arCri.add(UiGradingCriteria.getMid());
-		String str = "";
-		for (int i = 0; i < arCri.size(); i++) {
-			str += arCri.get(i) + "\n";
-		}
-		if(FileConection.saveCriteriaToFile(str)) {
-			JOptionPane.showMessageDialog(null, "Success to save Criteria to server", "Success",
-					JOptionPane.INFORMATION_MESSAGE);	
+		if(UiGradingCriteria.getRe() > -1 && UiGradingCriteria.getFin() > -1 && UiGradingCriteria.getMid() >-1) {
+			String str = "";
+			for (int i = 0; i < arCri.size(); i++) {
+				str += arCri.get(i) + "\n";
+			}
+			if(FileConection.saveCriteriaToFile(str)) {
+				JOptionPane.showMessageDialog(null, "Success to save Criteria to server", "Success",
+				JOptionPane.INFORMATION_MESSAGE);	
+			}
+		}else {
+			JOptionPane.showMessageDialog(null, "Please insert positive value!");
 		}
 	}
 	public static void keepListId() {
@@ -201,4 +205,14 @@ public class Point {
 	public static double getPoint(int i) {
 		return arScore.get(i);
 	}
+	
+	public static boolean CheckCriteria(double reward, double midtm, double finaltm) {
+		if(reward + midtm + finaltm == 100.0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
 }
